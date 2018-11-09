@@ -1,0 +1,7 @@
+{
+  "semi": false,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "endOfLine": "auto",
+  "parser": "typescript"
+}
