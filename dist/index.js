@@ -18,4 +18,4 @@ var shipstation = function () {
         orders: orders
     };
 };
-exports.default = shipstation;
+exports.default = shipstation();
