@@ -27,22 +27,24 @@ var RequestMethod;
 })(RequestMethod = exports.RequestMethod || (exports.RequestMethod = {}));
 var Shipstation = (function () {
     function Shipstation() {
-        this.baseUrl = 'https://ssapi.shipstation.com';
+        var _this = this;
+        this.baseUrl = 'https://ssapi.shipstation.com/';
+        this.request = function (url, method, useBaseUrl) {
+            if (useBaseUrl === void 0) { useBaseUrl = true; }
+            return axios_1.default.request({
+                headers: {
+                    Authorization: "Basic " + _this.authorizationToken
+                },
+                method: method,
+                url: "" + (useBaseUrl ? _this.baseUrl : '') + url
+            });
+        };
         if (!process.env.SS_API_KEY || !process.env.SS_API_SECRET) {
             throw new Error("APIKey and API Secret are required! Provided API Key: " + process.env.SS_API_KEY + " API Secret: " + process.env.SS_API_SECRET);
         }
         this.authorizationToken = base64.encode(process.env.SS_API_KEY + ":" + process.env.SS_API_SECRET);
         this.request = stopcock(this.request, rateLimitOpts);
     }
-    Shipstation.prototype.request = function (url, method) {
-        return axios_1.default.request({
-            headers: {
-                Authorization: "Basic " + this.authorizationToken
-            },
-            method: method,
-            url: this.baseUrl + "/" + url
-        });
-    };
     Shipstation = __decorate([
         typedi_1.Service(),
         __metadata("design:paramtypes", [])

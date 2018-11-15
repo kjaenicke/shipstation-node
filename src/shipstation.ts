@@ -19,7 +19,7 @@ export enum RequestMethod {
 @Service()
 export default class Shipstation {
   public authorizationToken: string
-  private baseUrl: string = 'https://ssapi.shipstation.com'
+  private baseUrl: string = 'https://ssapi.shipstation.com/'
 
   constructor() {
     if (!process.env.SS_API_KEY || !process.env.SS_API_SECRET) {
@@ -39,13 +39,13 @@ export default class Shipstation {
     this.request = stopcock(this.request, rateLimitOpts)
   }
 
-  public request(url: string, method: RequestMethod) {
+  public request = (url: string, method: RequestMethod, useBaseUrl = true) => {
     return axios.request({
       headers: {
         Authorization: `Basic ${this.authorizationToken}`
       },
       method,
-      url: `${this.baseUrl}/${url}`
+      url: `${useBaseUrl ? this.baseUrl : ''}${url}`
     })
   }
 }

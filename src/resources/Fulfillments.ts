@@ -9,7 +9,7 @@ export class Fulfillments {
   constructor(private shipstation: Shipstation) {}
 
   public async get(carrierId: number): Promise<IFulfillment> {
-    const url = `${this.baseUrl}/${carrierId}`
+    const url = `${this.baseUrl}${carrierId}`
     const response = await this.shipstation.request(url, RequestMethod.GET)
     return response.data() as IFulfillment
   }

@@ -1,20 +1,25 @@
 import 'reflect-metadata'
-import Container from 'typedi'
 
+import * as Models from './models'
 import { Carriers } from './resources/Carriers'
 import { Fulfillments } from './resources/Fulfillments'
 import { Orders } from './resources/Orders'
+import Shipstation from './shipstation'
 
 const shipstation = () => {
-  const orders = Container.get(Orders)
-  const carriers = Container.get(Carriers)
-  const fulfillments = Container.get(Fulfillments)
+  const ss = new Shipstation()
+
+  const orders = new Orders(ss)
+  const carriers = new Carriers(ss)
+  const fulfillments = new Fulfillments(ss)
 
   return {
     carriers,
     fulfillments,
-    orders
+    orders,
+    request: ss.request
   }
 }
 
 export default shipstation()
+export { Models }

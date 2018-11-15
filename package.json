@@ -7,7 +7,7 @@
     "build": "tsc"
   },
   "author": "Keenan Jaenicke<kjaenick@gmail.com>",
-  "license": "unlicensed",
+  "license": "MIT",
   "types": "dist/index.d.ts",
   "dependencies": {
     "axios": "^0.18.0",

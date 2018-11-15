@@ -9,9 +9,9 @@ export class Carriers {
   constructor(private shipstation: Shipstation) {}
 
   public async get(carrierId: number): Promise<ICarrier> {
-    const url = `${this.baseUrl}/${carrierId}`
+    const url = `${this.baseUrl}${carrierId}`
     const response = await this.shipstation.request(url, RequestMethod.GET)
-    return response.data() as ICarrier
+    return response.data as ICarrier
   }
 
   public async getAll(): Promise<ICarrier[]> {

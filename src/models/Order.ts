@@ -2,7 +2,7 @@ import { IAddress } from './Address'
 import { IAdvancedOptions } from './AdvancedOptions'
 import { IDimensions } from './Dimensions'
 import { IInsuranceOptions } from './InsuranceOptions'
-import { IInternationalOptions } from './InternationOptions'
+import { IInternationalOptions } from './InternationalOptions'
 import { IPaginatedResult } from './Pagination'
 import { IWeight } from './Weight'
 

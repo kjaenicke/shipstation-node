@@ -1,21 +1,32 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-var typedi_1 = __importDefault(require("typedi"));
+var Models = __importStar(require("./models"));
+exports.Models = Models;
 var Carriers_1 = require("./resources/Carriers");
 var Fulfillments_1 = require("./resources/Fulfillments");
 var Orders_1 = require("./resources/Orders");
+var shipstation_1 = __importDefault(require("./shipstation"));
 var shipstation = function () {
-    var orders = typedi_1.default.get(Orders_1.Orders);
-    var carriers = typedi_1.default.get(Carriers_1.Carriers);
-    var fulfillments = typedi_1.default.get(Fulfillments_1.Fulfillments);
+    var ss = new shipstation_1.default();
+    var orders = new Orders_1.Orders(ss);
+    var carriers = new Carriers_1.Carriers(ss);
+    var fulfillments = new Fulfillments_1.Fulfillments(ss);
     return {
         carriers: carriers,
         fulfillments: fulfillments,
-        orders: orders
+        orders: orders,
+        request: ss.request
     };
 };
 exports.default = shipstation();

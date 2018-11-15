@@ -64,11 +64,11 @@ var Orders = (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        url = this.baseUrl + "/" + orderId;
+                        url = "" + this.baseUrl + orderId;
                         return [4, this.shipstation.request(url, shipstation_1.RequestMethod.GET)];
                     case 1:
                         response = _a.sent();
-                        return [2, response.data()];
+                        return [2, response.data];
                 }
             });
         });

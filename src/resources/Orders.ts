@@ -9,9 +9,9 @@ export class Orders {
   constructor(private shipstation: Shipstation) {}
 
   public async get(orderId: number): Promise<IOrder> {
-    const url = `${this.baseUrl}/${orderId}`
+    const url = `${this.baseUrl}${orderId}`
     const response = await this.shipstation.request(url, RequestMethod.GET)
-    return response.data() as IOrder
+    return response.data as IOrder
   }
 
   public async getAll(): Promise<IOrderPaginationResult> {
