@@ -29,15 +29,19 @@ var Shipstation = (function () {
     function Shipstation() {
         var _this = this;
         this.baseUrl = 'https://ssapi.shipstation.com/';
-        this.request = function (url, method, useBaseUrl) {
-            if (useBaseUrl === void 0) { useBaseUrl = true; }
-            return axios_1.default.request({
+        this.request = function (_a) {
+            var url = _a.url, method = _a.method, _b = _a.useBaseUrl, useBaseUrl = _b === void 0 ? true : _b, data = _a.data;
+            var opts = {
                 headers: {
                     Authorization: "Basic " + _this.authorizationToken
                 },
                 method: method,
                 url: "" + (useBaseUrl ? _this.baseUrl : '') + url
-            });
+            };
+            if (data) {
+                opts.data = data;
+            }
+            return axios_1.default.request(opts);
         };
         if (!process.env.SS_API_KEY || !process.env.SS_API_SECRET) {
             throw new Error("APIKey and API Secret are required! Provided API Key: " + process.env.SS_API_KEY + " API Secret: " + process.env.SS_API_SECRET);

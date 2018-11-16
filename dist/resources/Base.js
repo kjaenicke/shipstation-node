@@ -1,26 +1,4 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -56,31 +34,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var typedi_1 = require("typedi");
-var shipstation_1 = __importStar(require("../shipstation"));
-var Base_1 = require("./Base");
-var Orders = (function (_super) {
-    __extends(Orders, _super);
-    function Orders(shipstation) {
-        var _this = _super.call(this, shipstation, 'orders') || this;
-        _this.shipstation = shipstation;
-        return _this;
+var shipstation_1 = require("../shipstation");
+var BaseResource = (function () {
+    function BaseResource(shipstation, baseUrl) {
+        this.shipstation = shipstation;
+        this.baseUrl = baseUrl;
+        this.shipstation = shipstation;
+        this.baseUrl = baseUrl;
     }
-    Orders.prototype.getAll = function () {
+    BaseResource.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var url, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        url = this.baseUrl;
+                        url = this.baseUrl + "/" + id;
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.GET
@@ -92,29 +61,6 @@ var Orders = (function (_super) {
             });
         });
     };
-    Orders.prototype.createOrUpdate = function (data) {
-        return __awaiter(this, void 0, void 0, function () {
-            var url, response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        url = this.baseUrl + "/createorder";
-                        return [4, this.shipstation.request({
-                                url: url,
-                                method: shipstation_1.RequestMethod.POST,
-                                data: data
-                            })];
-                    case 1:
-                        response = _a.sent();
-                        return [2, response.data];
-                }
-            });
-        });
-    };
-    Orders = __decorate([
-        typedi_1.Service(),
-        __metadata("design:paramtypes", [shipstation_1.default])
-    ], Orders);
-    return Orders;
-}(Base_1.BaseResource));
-exports.Orders = Orders;
+    return BaseResource;
+}());
+exports.BaseResource = BaseResource;

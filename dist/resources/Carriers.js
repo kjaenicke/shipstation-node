@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -53,26 +66,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var typedi_1 = require("typedi");
 var shipstation_1 = __importStar(require("../shipstation"));
-var Carriers = (function () {
+var Base_1 = require("./Base");
+var Carriers = (function (_super) {
+    __extends(Carriers, _super);
     function Carriers(shipstation) {
-        this.shipstation = shipstation;
-        this.baseUrl = 'carriers';
+        var _this = _super.call(this, shipstation, 'carriers') || this;
+        _this.shipstation = shipstation;
+        return _this;
     }
-    Carriers.prototype.get = function (carrierId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var url, response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        url = "" + this.baseUrl + carrierId;
-                        return [4, this.shipstation.request(url, shipstation_1.RequestMethod.GET)];
-                    case 1:
-                        response = _a.sent();
-                        return [2, response.data];
-                }
-            });
-        });
-    };
     Carriers.prototype.getAll = function () {
         return __awaiter(this, void 0, void 0, function () {
             var url, response;
@@ -80,7 +81,10 @@ var Carriers = (function () {
                 switch (_a.label) {
                     case 0:
                         url = this.baseUrl;
-                        return [4, this.shipstation.request(url, shipstation_1.RequestMethod.GET)];
+                        return [4, this.shipstation.request({
+                                url: url,
+                                method: shipstation_1.RequestMethod.GET
+                            })];
                     case 1:
                         response = _a.sent();
                         return [2, response.data];
@@ -93,5 +97,5 @@ var Carriers = (function () {
         __metadata("design:paramtypes", [shipstation_1.default])
     ], Carriers);
     return Carriers;
-}());
+}(Base_1.BaseResource));
 exports.Carriers = Carriers;

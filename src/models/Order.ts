@@ -54,6 +54,40 @@ export interface IOrder {
   externallyFulfilledBy: string
 }
 
+export interface ICreateOrUpdateOrder {
+  orderNumber: string
+  orderKey?: string
+  orderDate: string
+  paymentDate?: string
+  shipByDate?: string
+  orderStatus: OrderStatus
+  customerUsername?: string
+  customerEmail?: string
+  billTo: IAddress
+  shipTo: IAddress
+  items?: any[]
+  amountPaid?: number
+  taxAmount?: number
+  shippingAmount?: number
+  customerNotes?: string
+  internalNotes?: string
+  gift?: boolean
+  giftMessage?: string
+  paymentMethod?: string
+  requestedShippingService?: string
+  carrierCode?: string
+  serviceCode?: string
+  packageCode?: string
+  confirmation?: string
+  shipDate?: string
+  weight?: IWeight
+  dimensions?: IDimensions
+  insuranceOptions?: IInsuranceOptions
+  internationalOptions?: IInternationalOptions
+  advancedOptions?: IAdvancedOptions
+  tagIds?: number[]
+}
+
 export interface IOrderPaginationResult extends IPaginatedResult {
   orders: IOrder[]
 }

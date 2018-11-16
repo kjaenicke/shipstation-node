@@ -67,20 +67,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var typedi_1 = require("typedi");
 var shipstation_1 = __importStar(require("../shipstation"));
 var Base_1 = require("./Base");
-var Orders = (function (_super) {
-    __extends(Orders, _super);
-    function Orders(shipstation) {
-        var _this = _super.call(this, shipstation, 'orders') || this;
+var Stores = (function (_super) {
+    __extends(Stores, _super);
+    function Stores(shipstation) {
+        var _this = _super.call(this, shipstation, 'stores') || this;
         _this.shipstation = shipstation;
         return _this;
     }
-    Orders.prototype.getAll = function () {
+    Stores.prototype.getAll = function (opts) {
         return __awaiter(this, void 0, void 0, function () {
-            var url, response;
+            var url, marketplaceQuery, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         url = this.baseUrl;
+                        if (typeof opts !== 'undefined') {
+                            if (typeof opts.showInactive !== 'undefined') {
+                                url += "?showInactive=" + opts.showInactive;
+                            }
+                            if (typeof opts.marketplaceId !== 'undefined') {
+                                marketplaceQuery = "marketplaceId=" + opts.marketplaceId;
+                                url +=
+                                    url.indexOf('?') > -1
+                                        ? "&" + marketplaceQuery
+                                        : "?" + marketplaceQuery;
+                            }
+                        }
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.GET
@@ -92,29 +104,10 @@ var Orders = (function (_super) {
             });
         });
     };
-    Orders.prototype.createOrUpdate = function (data) {
-        return __awaiter(this, void 0, void 0, function () {
-            var url, response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        url = this.baseUrl + "/createorder";
-                        return [4, this.shipstation.request({
-                                url: url,
-                                method: shipstation_1.RequestMethod.POST,
-                                data: data
-                            })];
-                    case 1:
-                        response = _a.sent();
-                        return [2, response.data];
-                }
-            });
-        });
-    };
-    Orders = __decorate([
+    Stores = __decorate([
         typedi_1.Service(),
         __metadata("design:paramtypes", [shipstation_1.default])
-    ], Orders);
-    return Orders;
+    ], Stores);
+    return Stores;
 }(Base_1.BaseResource));
-exports.Orders = Orders;
+exports.Stores = Stores;

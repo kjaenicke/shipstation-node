@@ -8,7 +8,7 @@
   },
   "author": "Keenan Jaenicke<kjaenick@gmail.com>",
   "license": "MIT",
-  "types": "dist/index.d.ts",
+  "types": "typings/index.d.ts",
   "dependencies": {
     "axios": "^0.18.0",
     "base-64": "^0.1.0",

@@ -1,9 +1,8 @@
 import { ICarrier } from '../models';
 import Shipstation from '../shipstation';
-export declare class Carriers {
-    private shipstation;
-    private baseUrl;
+import { BaseResource } from './Base';
+export declare class Carriers extends BaseResource<ICarrier> {
+    protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    get(carrierId: number): Promise<ICarrier>;
     getAll(): Promise<ICarrier[]>;
 }

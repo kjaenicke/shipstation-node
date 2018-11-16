@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import { Service } from 'typedi'
 
 // tslint:disable-next-line:no-var-requires
@@ -14,6 +14,13 @@ const rateLimitOpts = {
 export enum RequestMethod {
   GET = 'GET',
   POST = 'POST'
+}
+
+export interface IShipstationRequestOptions {
+  url: string
+  method: RequestMethod
+  useBaseUrl?: boolean
+  data?: any
 }
 
 @Service()
@@ -39,13 +46,24 @@ export default class Shipstation {
     this.request = stopcock(this.request, rateLimitOpts)
   }
 
-  public request = (url: string, method: RequestMethod, useBaseUrl = true) => {
-    return axios.request({
+  public request = ({
+    url,
+    method,
+    useBaseUrl = true,
+    data
+  }: IShipstationRequestOptions) => {
+    const opts: AxiosRequestConfig = {
       headers: {
         Authorization: `Basic ${this.authorizationToken}`
       },
       method,
       url: `${useBaseUrl ? this.baseUrl : ''}${url}`
-    })
+    }
+
+    if (data) {
+      opts.data = data
+    }
+
+    return axios.request(opts)
   }
 }
