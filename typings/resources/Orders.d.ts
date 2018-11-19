@@ -1,4 +1,4 @@
-import { ICreateOrUpdateOrder, IOrder, IOrderPaginationResult } from '../models';
+import { ICreateOrUpdateOrder, ICreateOrUpdateOrderBulkResponse, IOrder, IOrderPaginationResult } from '../models';
 import Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 export declare class Orders extends BaseResource<IOrder> {
@@ -6,4 +6,5 @@ export declare class Orders extends BaseResource<IOrder> {
     constructor(shipstation: Shipstation);
     getAll(): Promise<IOrderPaginationResult>;
     createOrUpdate(data: ICreateOrUpdateOrder): Promise<IOrder>;
+    createOrUpdateBulk(data: ICreateOrUpdateOrder[]): Promise<ICreateOrUpdateOrderBulkResponse>;
 }

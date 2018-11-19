@@ -111,6 +111,25 @@ var Orders = (function (_super) {
             });
         });
     };
+    Orders.prototype.createOrUpdateBulk = function (data) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = this.baseUrl + "/createorders";
+                        return [4, this.shipstation.request({
+                                url: url,
+                                method: shipstation_1.RequestMethod.POST,
+                                data: data
+                            })];
+                    case 1:
+                        response = _a.sent();
+                        return [2, response.data];
+                }
+            });
+        });
+    };
     Orders = __decorate([
         typedi_1.Service(),
         __metadata("design:paramtypes", [shipstation_1.default])
