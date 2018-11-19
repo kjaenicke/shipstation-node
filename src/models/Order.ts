@@ -92,8 +92,15 @@ export interface IOrderPaginationResult extends IPaginatedResult {
   orders: IOrder[]
 }
 
+interface IBulkCreateOrUpdateOrderResponse {
+  orderId: string
+  orderNumber: string
+  orderKey: string
+  success: boolean
+  errorMessage: string | null
+}
+
 export interface ICreateOrUpdateOrderBulkResponse {
-  results: Pick<IOrder, 'orderId' | 'orderNumber' | 'orderKey'> &
-    Array<{ success: boolean; errorMessage: string | null }>
+  results: IBulkCreateOrUpdateOrderResponse[]
   hasErrors: boolean
 }
