@@ -16,6 +16,7 @@ exports.Models = Models;
 var Carriers_1 = require("./resources/Carriers");
 var Fulfillments_1 = require("./resources/Fulfillments");
 var Orders_1 = require("./resources/Orders");
+var Shipments_1 = require("./resources/Shipments");
 var Stores_1 = require("./resources/Stores");
 var shipstation_1 = __importDefault(require("./shipstation"));
 var shipstation = function () {
@@ -24,11 +25,13 @@ var shipstation = function () {
     var carriers = new Carriers_1.Carriers(ss);
     var fulfillments = new Fulfillments_1.Fulfillments(ss);
     var stores = new Stores_1.Stores(ss);
+    var shipments = new Shipments_1.Shipments(ss);
     return {
         carriers: carriers,
         fulfillments: fulfillments,
         orders: orders,
         stores: stores,
+        shipments: shipments,
         request: ss.request
     };
 };
