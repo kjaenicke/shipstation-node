@@ -1,17 +1,17 @@
-import { IAddress } from './Address'
-import { IAdvancedOptions } from './AdvancedOptions'
-import { IDimensions } from './Dimensions'
-import { IInsuranceOptions } from './InsuranceOptions'
-import { IInternationalOptions } from './InternationalOptions'
-import { IPaginatedResult } from './Pagination'
-import { IWeight } from './Weight'
+import { IAddress } from "./Address"
+import { IAdvancedOptions } from "./AdvancedOptions"
+import { IDimensions } from "./Dimensions"
+import { IInsuranceOptions } from "./InsuranceOptions"
+import { IInternationalOptions } from "./InternationalOptions"
+import { IPaginatedResult } from "./Pagination"
+import { IWeight } from "./Weight"
 
 export type OrderStatus =
-  | 'awaiting_payment'
-  | 'awaiting_shipment'
-  | 'shipped'
-  | 'on_hold'
-  | 'cancelled'
+  | "awaiting_payment"
+  | "awaiting_shipment"
+  | "shipped"
+  | "on_hold"
+  | "cancelled"
 
 export interface IOrder {
   orderId: number
@@ -65,7 +65,7 @@ export interface ICreateOrUpdateOrder {
   customerEmail?: string
   billTo: IAddress
   shipTo: IAddress
-  items?: any[]
+  items?: Array<Omit<IOrderItem, "orderItemId" | "createDate" | "modifyDate">>
   amountPaid?: number
   taxAmount?: number
   shippingAmount?: number
@@ -86,6 +86,32 @@ export interface ICreateOrUpdateOrder {
   internationalOptions?: IInternationalOptions
   advancedOptions?: IAdvancedOptions
   tagIds?: number[]
+}
+
+export interface IOrderItem {
+  orderItemId: string
+  lineItemKey: string
+  sku: string
+  name: string
+  imageUrl?: string
+  weight?: IWeight
+  quantity: number
+  unitPrice?: number
+  taxAmount?: number
+  shippingAmount?: number
+  warehoustLocation?: string
+  options?: IItemOption[]
+  productId?: number
+  fulfillmentSku?: string
+  adjustment: boolean
+  upc?: string
+  createDate: string
+  modifyDate: string
+}
+
+export interface IItemOption {
+  name: string
+  value: string
 }
 
 export interface IOrderPaginationResult extends IPaginatedResult {
