@@ -15,11 +15,11 @@
     "reflect-metadata": "^0.1.12",
     "stopcock": "^1.0.0",
     "typedi": "^0.8.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.6.4"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "@types/node": "^10.12.3",
+    "@types/node": "^12.11.5",
     "ts-node": "^7.0.1"
   }
 }

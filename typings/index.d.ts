@@ -11,7 +11,7 @@ declare const _default: {
     orders: Orders;
     stores: Stores;
     shipments: Shipments;
-    request: ({ url, method, useBaseUrl, data }: import("./shipstation").IShipstationRequestOptions) => import("axios").AxiosPromise<any>;
+    request: ({ url, method, useBaseUrl, data }: import("./shipstation").IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any>>;
 };
 export default _default;
 export { Models };
