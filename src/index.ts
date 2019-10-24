@@ -6,6 +6,7 @@ import { Fulfillments } from './resources/Fulfillments'
 import { Orders } from './resources/Orders'
 import { Shipments } from './resources/Shipments'
 import { Stores } from './resources/Stores'
+import { Webhooks } from './resources/Webhooks'
 import Shipstation from './shipstation'
 
 const shipstation = () => {
@@ -16,6 +17,7 @@ const shipstation = () => {
   const fulfillments = new Fulfillments(ss)
   const stores = new Stores(ss)
   const shipments = new Shipments(ss)
+  const webhooks = new Webhooks(ss)
 
   return {
     carriers,
@@ -23,6 +25,7 @@ const shipstation = () => {
     orders,
     stores,
     shipments,
+    webhooks,
     request: ss.request
   }
 }

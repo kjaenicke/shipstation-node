@@ -3,5 +3,6 @@
   "arrowParens": "avoid",
   "bracketSpacing": true,
   "endOfLine": "auto",
-  "parser": "typescript"
+  "parser": "typescript",
+  "singleQuote": true
 }

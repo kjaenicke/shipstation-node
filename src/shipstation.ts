@@ -13,7 +13,8 @@ const rateLimitOpts = {
 
 export enum RequestMethod {
   GET = 'GET',
-  POST = 'POST'
+  POST = 'POST',
+  DELETE = 'DELETE'
 }
 
 export interface IShipstationRequestOptions {
@@ -32,9 +33,7 @@ export default class Shipstation {
     if (!process.env.SS_API_KEY || !process.env.SS_API_SECRET) {
       // tslint:disable-next-line:no-console
       throw new Error(
-        `APIKey and API Secret are required! Provided API Key: ${
-          process.env.SS_API_KEY
-        } API Secret: ${process.env.SS_API_SECRET}`
+        `APIKey and API Secret are required! Provided API Key: ${process.env.SS_API_KEY} API Secret: ${process.env.SS_API_SECRET}`
       )
     }
 
