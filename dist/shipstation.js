@@ -24,6 +24,7 @@ var RequestMethod;
 (function (RequestMethod) {
     RequestMethod["GET"] = "GET";
     RequestMethod["POST"] = "POST";
+    RequestMethod["DELETE"] = "DELETE";
 })(RequestMethod = exports.RequestMethod || (exports.RequestMethod = {}));
 var Shipstation = (function () {
     function Shipstation() {

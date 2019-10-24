@@ -18,6 +18,7 @@ var Fulfillments_1 = require("./resources/Fulfillments");
 var Orders_1 = require("./resources/Orders");
 var Shipments_1 = require("./resources/Shipments");
 var Stores_1 = require("./resources/Stores");
+var Webhooks_1 = require("./resources/Webhooks");
 var shipstation_1 = __importDefault(require("./shipstation"));
 var shipstation = function () {
     var ss = new shipstation_1.default();
@@ -26,12 +27,14 @@ var shipstation = function () {
     var fulfillments = new Fulfillments_1.Fulfillments(ss);
     var stores = new Stores_1.Stores(ss);
     var shipments = new Shipments_1.Shipments(ss);
+    var webhooks = new Webhooks_1.Webhooks(ss);
     return {
         carriers: carriers,
         fulfillments: fulfillments,
         orders: orders,
         stores: stores,
         shipments: shipments,
+        webhooks: webhooks,
         request: ss.request
     };
 };

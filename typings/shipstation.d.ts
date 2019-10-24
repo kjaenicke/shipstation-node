@@ -1,6 +1,7 @@
 export declare enum RequestMethod {
     GET = "GET",
-    POST = "POST"
+    POST = "POST",
+    DELETE = "DELETE"
 }
 export interface IShipstationRequestOptions {
     url: string;
