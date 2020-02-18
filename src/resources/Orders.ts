@@ -1,4 +1,3 @@
-import { Service } from 'typedi'
 import {
   ICreateOrUpdateOrder,
   ICreateOrUpdateOrderBulkResponse,
@@ -8,7 +7,6 @@ import {
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
-@Service()
 export class Orders extends BaseResource<IOrder> {
   constructor(protected shipstation: Shipstation) {
     super(shipstation, 'orders')

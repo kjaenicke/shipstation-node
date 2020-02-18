@@ -1,4 +1,3 @@
-import { Service } from 'typedi'
 import {
   ISubscribeToWebhookOpts,
   ISubscriptionResponse,
@@ -8,7 +7,6 @@ import {
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
-@Service()
 export class Webhooks extends BaseResource<IWebhook> {
   constructor(protected shipstation: Shipstation) {
     super(shipstation, 'webhooks')

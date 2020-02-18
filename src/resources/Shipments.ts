@@ -1,9 +1,7 @@
-import { Service } from 'typedi'
 import { IShipment } from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
-@Service()
 export class Shipments extends BaseResource<IShipment> {
   constructor(protected shipstation: Shipstation) {
     super(shipstation, 'shipments')

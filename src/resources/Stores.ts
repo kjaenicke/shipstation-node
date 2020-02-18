@@ -1,4 +1,3 @@
-import { Service } from 'typedi'
 import { IStore } from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
@@ -8,7 +7,6 @@ export interface IGetAllStoresOptions {
   marketplaceId?: number
 }
 
-@Service()
 export class Stores extends BaseResource<IStore> {
   constructor(protected shipstation: Shipstation) {
     super(shipstation, 'stores')

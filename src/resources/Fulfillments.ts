@@ -1,9 +1,7 @@
-import { Service } from 'typedi'
 import { IFulfillment, IFulfillmentPaginationResult } from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
-@Service()
 export class Fulfillments extends BaseResource<IFulfillment> {
   constructor(protected shipstation: Shipstation) {
     super(shipstation, 'fulfillments')
