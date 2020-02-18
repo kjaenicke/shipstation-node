@@ -11,7 +11,10 @@ This project is currently a work in progress and contributors are welcome! 👋
   - SS_API_SECRET (your Shipstation API secret)
 
 ```js
-import shipstation from 'shipstation-node';
+import ShipStation from 'shipstation-node'
+
+// Create instance
+const shipstation = new ShipStation()
 
 // Get all orders
 const orders = await shipstation.orders.getAll()
