@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { Service } from 'typedi'
 
 // tslint:disable-next-line:no-var-requires
 const base64 = require('base-64')
@@ -24,7 +23,6 @@ export interface IShipstationRequestOptions {
   data?: any
 }
 
-@Service()
 export default class Shipstation {
   public authorizationToken: string
   private baseUrl: string = 'https://ssapi.shipstation.com/'

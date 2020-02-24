@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+import { AxiosResponse } from 'axios'
 
 import * as Models from './models'
 import { Carriers } from './resources/Carriers'
@@ -7,28 +7,32 @@ import { Orders } from './resources/Orders'
 import { Shipments } from './resources/Shipments'
 import { Stores } from './resources/Stores'
 import { Webhooks } from './resources/Webhooks'
-import Shipstation from './shipstation'
+import Shipstation, { IShipstationRequestOptions } from './shipstation'
 
-const shipstation = () => {
-  const ss = new Shipstation()
+export default class ShipStationAPI {
+  private ss: Shipstation
 
-  const orders = new Orders(ss)
-  const carriers = new Carriers(ss)
-  const fulfillments = new Fulfillments(ss)
-  const stores = new Stores(ss)
-  const shipments = new Shipments(ss)
-  const webhooks = new Webhooks(ss)
+  public orders: Orders
+  public carriers: Carriers
+  public fulfillments: Fulfillments
+  public stores: Stores
+  public shipments: Shipments
+  public webhooks: Webhooks
+  public request: (
+    args: IShipstationRequestOptions
+  ) => Promise<AxiosResponse<any>>
 
-  return {
-    carriers,
-    fulfillments,
-    orders,
-    stores,
-    shipments,
-    webhooks,
-    request: ss.request
+  constructor() {
+    this.ss = new Shipstation()
+
+    this.orders = new Orders(this.ss)
+    this.carriers = new Carriers(this.ss)
+    this.fulfillments = new Fulfillments(this.ss)
+    this.stores = new Stores(this.ss)
+    this.shipments = new Shipments(this.ss)
+    this.webhooks = new Webhooks(this.ss)
+    this.request = this.ss.request
   }
 }
 
-export default shipstation()
 export { Models }
