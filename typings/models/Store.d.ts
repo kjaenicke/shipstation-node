@@ -3,7 +3,7 @@ export interface IStore {
     storeName: string;
     marketplaceId: number;
     marketplaceName: string;
-    accountNumber: number | null;
+    accountName: string | null;
     email: string | null;
     integrationUrl: string | null;
     active: boolean;

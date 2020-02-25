@@ -10,6 +10,6 @@ export interface IAddress {
     postalCode: string;
     county?: string;
     phone?: string;
-    residential?: string;
+    residential?: boolean;
     addressverified?: AddressVerificationType;
 }
