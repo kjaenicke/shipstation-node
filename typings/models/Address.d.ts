@@ -8,7 +8,7 @@ export interface IAddress {
     city: string;
     state: string;
     postalCode: string;
-    county?: string;
+    country: string;
     phone?: string;
     residential?: boolean;
     addressverified?: AddressVerificationType;
