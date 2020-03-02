@@ -23,11 +23,12 @@ export interface IOrder {
   paymentDate: string
   shipByDate: string
   orderStatus: OrderStatus
-  customerId: string
+  customerId: number
   customerUsername: string
   customerEmail: string
   billTo: IAddress
   shipTo: IAddress
+  items: IOrderItem[]
   orderTotal: number
   amountPaid: number
   taxAmount: number
@@ -35,6 +36,7 @@ export interface IOrder {
   customerNotes: string
   internalNotes: string
   gift: boolean
+  giftMessage: string
   paymentMethod: string
   requestedShippingService: string
   carrierCode: string
@@ -89,7 +91,7 @@ export interface ICreateOrUpdateOrder {
 }
 
 export interface IOrderItem {
-  orderItemId: string
+  orderItemId: number
   lineItemKey: string
   sku: string
   name: string
