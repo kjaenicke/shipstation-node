@@ -1,6 +1,6 @@
 {
   "name": "shipstation-node",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "unofficial node.js wrapper for the shipstation api",
   "main": "dist/index.js",
   "scripts": {
