@@ -6,12 +6,12 @@ export type InternationalOptionsContentType =
   | 'sample'
 
 export interface ICustomsItem {
-  customsItemId: string
+  customsItemId: number
   description: string
   quantity: number
   value: number
   harmonizedTariffCode: string
-  countryOrOrigin: string
+  countryOfOrigin: string
 }
 
 export interface IInternationalOptions {

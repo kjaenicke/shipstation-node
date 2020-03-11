@@ -54,6 +54,7 @@ export interface IOrder {
   userId: string
   externallyFulfilled: boolean
   externallyFulfilledBy: string
+  labelMessages?: string
 }
 
 export interface ICreateOrUpdateOrder {
@@ -101,7 +102,7 @@ export interface IOrderItem {
   unitPrice?: number
   taxAmount?: number
   shippingAmount?: number
-  warehoustLocation?: string
+  warehouseLocation?: string
   options?: IItemOption[]
   productId?: number
   fulfillmentSku?: string

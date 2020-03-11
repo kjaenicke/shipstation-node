@@ -11,5 +11,5 @@ export interface IAddress {
     country: string;
     phone?: string;
     residential?: boolean;
-    addressverified?: AddressVerificationType;
+    addressVerified?: AddressVerificationType;
 }

@@ -15,5 +15,5 @@ export interface IAdvancedOptions {
     billToAccount?: string;
     billToPostalCode?: string;
     billToCountryCode?: string;
-    billToMyOtherAccount?: string;
+    billToMyOtherAccount?: number;
 }
