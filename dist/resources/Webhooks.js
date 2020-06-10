@@ -67,7 +67,7 @@ var Webhooks = (function (_super) {
                         url = this.baseUrl;
                         return [4, this.shipstation.request({
                                 url: url,
-                                method: shipstation_1.RequestMethod.GET
+                                method: shipstation_1.RequestMethod.GET,
                             })];
                     case 1:
                         response = _a.sent();
@@ -86,7 +86,7 @@ var Webhooks = (function (_super) {
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.POST,
-                                data: data
+                                data: data,
                             })];
                     case 1:
                         response = _a.sent();
@@ -104,7 +104,7 @@ var Webhooks = (function (_super) {
                         url = this.baseUrl + "/" + id;
                         return [4, this.shipstation.request({
                                 url: url,
-                                method: shipstation_1.RequestMethod.DELETE
+                                method: shipstation_1.RequestMethod.DELETE,
                             })];
                     case 1:
                         _a.sent();

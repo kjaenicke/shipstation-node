@@ -1,5 +1,3 @@
-import { IPaginatedResult } from './Pagination'
-
 export type WebhookEventType =
   | 'ORDER_NOTIFY'
   | 'ITEM_ORDER_NOTIFY'
@@ -7,11 +5,20 @@ export type WebhookEventType =
   | 'ITEM_SHIP_NOTIFY'
 
 export interface IWebhook {
-  resource_url: string
-  resource_type: WebhookEventType
+  IsLabelAPIHook: boolean
+  WebHookID: number
+  SellerID: number
+  StoreID: number
+  HookType: WebhookEventType
+  MessageFormat: 'Json'
+  Url: string
+  Name: string
+  BulkCopyBatchID: number | null
+  BulkCopyRecordID: number | null
+  Active: boolean
 }
 
-export interface IWebhookPaginationResult extends IPaginatedResult {
+export interface IWebhookResult {
   webhooks: IWebhook[]
 }
 

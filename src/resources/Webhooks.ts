@@ -2,7 +2,7 @@ import {
   ISubscribeToWebhookOpts,
   ISubscriptionResponse,
   IWebhook,
-  IWebhookPaginationResult
+  IWebhookResult,
 } from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
@@ -12,13 +12,13 @@ export class Webhooks extends BaseResource<IWebhook> {
     super(shipstation, 'webhooks')
   }
 
-  public async getAll(): Promise<IWebhookPaginationResult> {
+  public async getAll(): Promise<IWebhookResult> {
     const url = this.baseUrl
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET
+      method: RequestMethod.GET,
     })
-    return response.data as IWebhookPaginationResult
+    return response.data as IWebhookResult
   }
 
   public async subscribe(
@@ -28,7 +28,7 @@ export class Webhooks extends BaseResource<IWebhook> {
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.POST,
-      data
+      data,
     })
     return response.data as ISubscriptionResponse
   }
@@ -37,7 +37,7 @@ export class Webhooks extends BaseResource<IWebhook> {
     const url = `${this.baseUrl}/${id}`
     await this.shipstation.request({
       url,
-      method: RequestMethod.DELETE
+      method: RequestMethod.DELETE,
     })
 
     return null
