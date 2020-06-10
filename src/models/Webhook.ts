@@ -1,10 +1,10 @@
-import { IPaginatedResult } from "./Pagination"
+import { IPaginatedResult } from './Pagination'
 
 export type WebhookEventType =
-  | "ORDER_NOTIFY"
-  | "ITEM_ORDER_NOTIFY"
-  | "SHIP_NOTIFY"
-  | "ITEM_SHIP_NOTIFY"
+  | 'ORDER_NOTIFY'
+  | 'ITEM_ORDER_NOTIFY'
+  | 'SHIP_NOTIFY'
+  | 'ITEM_SHIP_NOTIFY'
 
 export interface IWebhook {
   resource_url: string
@@ -12,7 +12,7 @@ export interface IWebhook {
 }
 
 export interface IWebhookPaginationResult extends IPaginatedResult {
-  orders: IWebhook[]
+  webhooks: IWebhook[]
 }
 
 export interface ISubscribeToWebhookOpts {
