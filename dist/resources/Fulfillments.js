@@ -58,13 +58,14 @@ var Fulfillments = (function (_super) {
         _this.shipstation = shipstation;
         return _this;
     }
-    Fulfillments.prototype.getAll = function () {
+    Fulfillments.prototype.getAll = function (opts) {
         return __awaiter(this, void 0, void 0, function () {
-            var url, response;
+            var query, url, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        url = this.baseUrl;
+                        query = this.buildQueryStringFromParams(opts);
+                        url = this.baseUrl + query;
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.GET
