@@ -7,8 +7,10 @@ export class Fulfillments extends BaseResource<IFulfillment> {
     super(shipstation, 'fulfillments')
   }
 
-  public async getAll(): Promise<IFulfillmentPaginationResult> {
-    const url = this.baseUrl
+  public async getAll(opts?: object): Promise<IFulfillmentPaginationResult> {
+    const query = this.buildQueryStringFromParams(opts)
+    const url = this.baseUrl + query
+    
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.GET
