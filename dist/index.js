@@ -17,6 +17,7 @@ var Fulfillments_1 = require("./resources/Fulfillments");
 var Orders_1 = require("./resources/Orders");
 var Shipments_1 = require("./resources/Shipments");
 var Stores_1 = require("./resources/Stores");
+var Warehouses_1 = require("./resources/Warehouses");
 var Webhooks_1 = require("./resources/Webhooks");
 var shipstation_1 = __importDefault(require("./shipstation"));
 var ShipStationAPI = (function () {
@@ -27,6 +28,7 @@ var ShipStationAPI = (function () {
         this.fulfillments = new Fulfillments_1.Fulfillments(this.ss);
         this.stores = new Stores_1.Stores(this.ss);
         this.shipments = new Shipments_1.Shipments(this.ss);
+        this.warehouses = new Warehouses_1.Warehouses(this.ss);
         this.webhooks = new Webhooks_1.Webhooks(this.ss);
         this.request = this.ss.request;
     }

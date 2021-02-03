@@ -9,6 +9,7 @@ export * from './Order'
 export * from './Pagination'
 export * from './Shipment'
 export * from './Store'
+export * from './Warehouse'
 export * from './Webhook'
 export * from './Weight'
 
