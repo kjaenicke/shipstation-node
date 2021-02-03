@@ -21,7 +21,7 @@ var Shipstation = (function () {
         var _this = this;
         this.baseUrl = 'https://ssapi.shipstation.com/';
         this.request = function (_a) {
-            var url = _a.url, method = _a.method, _b = _a.useBaseUrl, useBaseUrl = _b === void 0 ? true : _b, data = _a.data;
+            var url = _a.url, _b = _a.method, method = _b === void 0 ? RequestMethod.GET : _b, _c = _a.useBaseUrl, useBaseUrl = _c === void 0 ? true : _c, data = _a.data;
             var opts = {
                 headers: {
                     Authorization: "Basic " + _this.authorizationToken

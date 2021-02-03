@@ -8,7 +8,7 @@ import { Shipments } from './resources/Shipments'
 import { Stores } from './resources/Stores'
 import { Warehouses } from './resources/Warehouses'
 import { Webhooks } from './resources/Webhooks'
-import Shipstation, { IShipstationRequestOptions } from './shipstation'
+import Shipstation, { IShipstationRequestOptions, RequestMethod } from './shipstation'
 
 export default class ShipStationAPI {
   private ss: Shipstation
@@ -38,4 +38,4 @@ export default class ShipStationAPI {
   }
 }
 
-export { Models }
+export { Models, IShipstationRequestOptions, RequestMethod }

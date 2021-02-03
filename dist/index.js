@@ -6,9 +6,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var Models = __importStar(require("./models"));
 exports.Models = Models;
@@ -19,7 +16,8 @@ var Shipments_1 = require("./resources/Shipments");
 var Stores_1 = require("./resources/Stores");
 var Warehouses_1 = require("./resources/Warehouses");
 var Webhooks_1 = require("./resources/Webhooks");
-var shipstation_1 = __importDefault(require("./shipstation"));
+var shipstation_1 = __importStar(require("./shipstation"));
+exports.RequestMethod = shipstation_1.RequestMethod;
 var ShipStationAPI = (function () {
     function ShipStationAPI() {
         this.ss = new shipstation_1.default();

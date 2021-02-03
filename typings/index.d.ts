@@ -7,7 +7,7 @@ import { Shipments } from './resources/Shipments';
 import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
-import { IShipstationRequestOptions } from './shipstation';
+import { IShipstationRequestOptions, RequestMethod } from './shipstation';
 export default class ShipStationAPI {
     private ss;
     orders: Orders;
@@ -20,4 +20,4 @@ export default class ShipStationAPI {
     request: (args: IShipstationRequestOptions) => Promise<AxiosResponse<any>>;
     constructor();
 }
-export { Models };
+export { Models, IShipstationRequestOptions, RequestMethod };
