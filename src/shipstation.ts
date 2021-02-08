@@ -18,7 +18,7 @@ export enum RequestMethod {
 
 export interface IShipstationRequestOptions {
   url: string
-  method: RequestMethod
+  method?: RequestMethod
   useBaseUrl?: boolean
   data?: any
 }
@@ -45,7 +45,7 @@ export default class Shipstation {
 
   public request = ({
     url,
-    method,
+    method = RequestMethod.GET,
     useBaseUrl = true,
     data
   }: IShipstationRequestOptions) => {

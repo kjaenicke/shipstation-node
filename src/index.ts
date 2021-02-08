@@ -6,8 +6,9 @@ import { Fulfillments } from './resources/Fulfillments'
 import { Orders } from './resources/Orders'
 import { Shipments } from './resources/Shipments'
 import { Stores } from './resources/Stores'
+import { Warehouses } from './resources/Warehouses'
 import { Webhooks } from './resources/Webhooks'
-import Shipstation, { IShipstationRequestOptions } from './shipstation'
+import Shipstation, { IShipstationRequestOptions, RequestMethod } from './shipstation'
 
 export default class ShipStationAPI {
   private ss: Shipstation
@@ -17,6 +18,7 @@ export default class ShipStationAPI {
   public fulfillments: Fulfillments
   public stores: Stores
   public shipments: Shipments
+  public warehouses: Warehouses
   public webhooks: Webhooks
   public request: (
     args: IShipstationRequestOptions
@@ -30,9 +32,10 @@ export default class ShipStationAPI {
     this.fulfillments = new Fulfillments(this.ss)
     this.stores = new Stores(this.ss)
     this.shipments = new Shipments(this.ss)
+    this.warehouses = new Warehouses(this.ss)
     this.webhooks = new Webhooks(this.ss)
     this.request = this.ss.request
   }
 }
 
-export { Models }
+export { Models, IShipstationRequestOptions, RequestMethod }

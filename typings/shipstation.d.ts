@@ -5,7 +5,7 @@ export declare enum RequestMethod {
 }
 export interface IShipstationRequestOptions {
     url: string;
-    method: RequestMethod;
+    method?: RequestMethod;
     useBaseUrl?: boolean;
     data?: any;
 }

@@ -1,4 +1,4 @@
-import { IShipment } from '../models'
+import { IShipment, IShippingRate, IShippingRateOptions } from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
@@ -16,5 +16,16 @@ export class Shipments extends BaseResource<IShipment> {
       method: RequestMethod.GET
     })
     return response.data as IShipment[]
+  }
+
+  public async getRates(data?: IShippingRateOptions): Promise<IShippingRate[]> {
+    const url = this.baseUrl + '/getrates'
+
+    const response = await this.shipstation.request({
+      url,
+      method: RequestMethod.POST,
+      data,
+    })
+    return response.data as IShippingRate[]
   }
 }

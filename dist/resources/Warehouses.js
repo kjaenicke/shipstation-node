@@ -51,14 +51,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var shipstation_1 = require("../shipstation");
 var Base_1 = require("./Base");
-var Shipments = (function (_super) {
-    __extends(Shipments, _super);
-    function Shipments(shipstation) {
-        var _this = _super.call(this, shipstation, 'shipments') || this;
+var Warehouses = (function (_super) {
+    __extends(Warehouses, _super);
+    function Warehouses(shipstation) {
+        var _this = _super.call(this, shipstation, 'warehouses') || this;
         _this.shipstation = shipstation;
         return _this;
     }
-    Shipments.prototype.getAll = function (opts) {
+    Warehouses.prototype.getAll = function (opts) {
         return __awaiter(this, void 0, void 0, function () {
             var query, url, response;
             return __generator(this, function (_a) {
@@ -77,25 +77,6 @@ var Shipments = (function (_super) {
             });
         });
     };
-    Shipments.prototype.getRates = function (data) {
-        return __awaiter(this, void 0, void 0, function () {
-            var url, response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        url = this.baseUrl + '/getrates';
-                        return [4, this.shipstation.request({
-                                url: url,
-                                method: shipstation_1.RequestMethod.POST,
-                                data: data,
-                            })];
-                    case 1:
-                        response = _a.sent();
-                        return [2, response.data];
-                }
-            });
-        });
-    };
-    return Shipments;
+    return Warehouses;
 }(Base_1.BaseResource));
-exports.Shipments = Shipments;
+exports.Warehouses = Warehouses;
