@@ -102,6 +102,19 @@ export interface IOrderItem {
     createDate: string;
     modifyDate: string;
 }
+export interface ICreateLabel {
+    orderId: number;
+    carrierCode?: string;
+    serviceCode?: string;
+    confirmation?: string;
+    shipDate: string;
+    weight?: IWeight;
+    dimensions?: IDimensions;
+    insuranceOptions?: IInsuranceOptions;
+    internationalOptions?: IInternationalOptions;
+    advancedOptions?: IAdvancedOptions;
+    testLabel: boolean;
+}
 export interface IItemOption {
     name: string;
     value: string;
@@ -119,5 +132,13 @@ interface IBulkCreateOrUpdateOrderResponse {
 export interface ICreateOrUpdateOrderBulkResponse {
     results: IBulkCreateOrUpdateOrderResponse[];
     hasErrors: boolean;
+}
+export interface ICreateLabelResponse {
+    shipmentId: number;
+    shipmentCost: number;
+    insuranceCost: number;
+    trackingNumber: string;
+    labelData: string;
+    formData?: string;
 }
 export {};
