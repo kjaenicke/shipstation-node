@@ -2,7 +2,9 @@ import {
   ICreateOrUpdateOrder,
   ICreateOrUpdateOrderBulkResponse,
   IOrder,
-  IOrderPaginationResult
+  IOrderPaginationResult,
+  ICreateLabel,
+  ICreateLabelResponse
 } from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
@@ -15,7 +17,7 @@ export class Orders extends BaseResource<IOrder> {
   public async getAll(opts?: object): Promise<IOrderPaginationResult> {
     const query = this.buildQueryStringFromParams(opts)
     const url = this.baseUrl + query
-    
+
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.GET
@@ -45,4 +47,18 @@ export class Orders extends BaseResource<IOrder> {
 
     return response.data as ICreateOrUpdateOrderBulkResponse
   }
+
+  public async createLabel(
+    data: ICreateLabel
+  ): Promise<ICreateLabelResponse> {
+    const url = `${this.baseUrl}/createlabelfororder`
+    const response = await this.shipstation.request({
+      url,
+      method: RequestMethod.POST,
+      data
+    })
+
+    return response.data as ICreateLabelResponse
+  }
+
 }

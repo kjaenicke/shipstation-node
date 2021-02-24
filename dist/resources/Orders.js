@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
@@ -49,6 +49,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Orders = void 0;
 var shipstation_1 = require("../shipstation");
 var Base_1 = require("./Base");
 var Orders = (function (_super) {
@@ -103,6 +104,25 @@ var Orders = (function (_super) {
                 switch (_a.label) {
                     case 0:
                         url = this.baseUrl + "/createorders";
+                        return [4, this.shipstation.request({
+                                url: url,
+                                method: shipstation_1.RequestMethod.POST,
+                                data: data
+                            })];
+                    case 1:
+                        response = _a.sent();
+                        return [2, response.data];
+                }
+            });
+        });
+    };
+    Orders.prototype.createLabel = function (data) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = this.baseUrl + "/createlabelfororder";
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.POST,
