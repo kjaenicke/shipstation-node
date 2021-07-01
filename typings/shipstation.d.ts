@@ -9,6 +9,10 @@ export interface IShipstationRequestOptions {
     useBaseUrl?: boolean;
     data?: any;
 }
+export interface IShipstationOptions {
+    apiKey?: string;
+    apiSecret?: string;
+}
 export default class Shipstation {
     authorizationToken: string;
     private baseUrl;
