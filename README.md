@@ -23,14 +23,14 @@ const orders = await shipstation.orders.getAll()
 const order = await shipstation.orders.get(1244)
 ```
 
-- Optionaly, provide Shipstation credentials through the options
+- Optionaly, set Shipstation credentials through the options:
   - apiKey (your Shipstation API Key)
   - apiSecret (your Shipstation API secret)
 
 ```js
 const shipstation = new ShipStation({
-  apiKey: '0000000000000000aaaaaaaaaaaaaaaa',
-  apiSecret: '9999999999999999zzzzzzzzzzzzzzzz'
+  apiKey: '<key>',
+  apiSecret: '<secret>'
 })
 ```
 
