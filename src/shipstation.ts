@@ -33,8 +33,11 @@ export default class Shipstation {
   private baseUrl: string = 'https://ssapi.shipstation.com/'
 
   constructor(options?: IShipstationOptions) {
-    const key = options?.apiKey || process.env.SS_API_KEY
-    const secret = options?.apiSecret || process.env.SS_API_SECRET
+    const key =
+      options && options.apiKey ? options.apiKey : process.env.SS_API_KEY
+    const secret =
+      options && options.apiSecret
+        ? options.apiSecret : process.env.SS_API_SECRET
 
     if (!key || !secret) {
       // tslint:disable-next-line:no-console

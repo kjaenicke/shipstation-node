@@ -16,6 +16,6 @@ export interface IShipstationOptions {
 export default class Shipstation {
     authorizationToken: string;
     private baseUrl;
-    constructor();
+    constructor(options?: IShipstationOptions);
     request: ({ url, method, useBaseUrl, data }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any>>;
 }
