@@ -17,7 +17,7 @@ var RequestMethod;
     RequestMethod["DELETE"] = "DELETE";
 })(RequestMethod = exports.RequestMethod || (exports.RequestMethod = {}));
 var Shipstation = (function () {
-    function Shipstation() {
+    function Shipstation(options) {
         var _this = this;
         this.baseUrl = 'https://ssapi.shipstation.com/';
         this.request = function (_a) {
@@ -34,10 +34,13 @@ var Shipstation = (function () {
             }
             return axios_1.default.request(opts);
         };
-        if (!process.env.SS_API_KEY || !process.env.SS_API_SECRET) {
-            throw new Error("APIKey and API Secret are required! Provided API Key: " + process.env.SS_API_KEY + " API Secret: " + process.env.SS_API_SECRET);
+        var key = options && options.apiKey ? options.apiKey : process.env.SS_API_KEY;
+        var secret = options && options.apiSecret
+            ? options.apiSecret : process.env.SS_API_SECRET;
+        if (!key || !secret) {
+            throw new Error("APIKey and API Secret are required! Provided API Key: " + key + " API Secret: " + secret);
         }
-        this.authorizationToken = base64.encode(process.env.SS_API_KEY + ":" + process.env.SS_API_SECRET);
+        this.authorizationToken = base64.encode(key + ":" + secret);
         this.request = stopcock(this.request, rateLimitOpts);
     }
     return Shipstation;

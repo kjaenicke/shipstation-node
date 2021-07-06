@@ -22,3 +22,15 @@ const orders = await shipstation.orders.getAll()
 // Get order by id
 const order = await shipstation.orders.get(1244)
 ```
+
+- Optionaly, set Shipstation credentials through the options:
+  - apiKey (your Shipstation API Key)
+  - apiSecret (your Shipstation API secret)
+
+```js
+const shipstation = new ShipStation({
+  apiKey: '<key>',
+  apiSecret: '<secret>'
+})
+```
+

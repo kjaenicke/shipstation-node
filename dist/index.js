@@ -19,8 +19,8 @@ var Webhooks_1 = require("./resources/Webhooks");
 var shipstation_1 = __importStar(require("./shipstation"));
 exports.RequestMethod = shipstation_1.RequestMethod;
 var ShipStationAPI = (function () {
-    function ShipStationAPI() {
-        this.ss = new shipstation_1.default();
+    function ShipStationAPI(options) {
+        this.ss = new shipstation_1.default(options);
         this.orders = new Orders_1.Orders(this.ss);
         this.carriers = new Carriers_1.Carriers(this.ss);
         this.fulfillments = new Fulfillments_1.Fulfillments(this.ss);

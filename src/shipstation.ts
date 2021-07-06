@@ -23,20 +23,31 @@ export interface IShipstationRequestOptions {
   data?: any
 }
 
+export interface IShipstationOptions {
+  apiKey?: string
+  apiSecret?: string
+}
+
 export default class Shipstation {
   public authorizationToken: string
   private baseUrl: string = 'https://ssapi.shipstation.com/'
 
-  constructor() {
-    if (!process.env.SS_API_KEY || !process.env.SS_API_SECRET) {
+  constructor(options?: IShipstationOptions) {
+    const key =
+      options && options.apiKey ? options.apiKey : process.env.SS_API_KEY
+    const secret =
+      options && options.apiSecret
+        ? options.apiSecret : process.env.SS_API_SECRET
+
+    if (!key || !secret) {
       // tslint:disable-next-line:no-console
       throw new Error(
-        `APIKey and API Secret are required! Provided API Key: ${process.env.SS_API_KEY} API Secret: ${process.env.SS_API_SECRET}`
+        `APIKey and API Secret are required! Provided API Key: ${key} API Secret: ${secret}`
       )
     }
 
     this.authorizationToken = base64.encode(
-      `${process.env.SS_API_KEY}:${process.env.SS_API_SECRET}`
+      `${key}:${secret}`
     )
 
     // Globally define API ratelimiting
