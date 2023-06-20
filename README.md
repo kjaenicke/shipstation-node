@@ -23,7 +23,7 @@ const orders = await shipstation.orders.getAll()
 const order = await shipstation.orders.get(1244)
 ```
 
-- Optionaly, set Shipstation credentials through the options:
+- Optionally, set Shipstation credentials through the options:
   - apiKey (your Shipstation API Key)
   - apiSecret (your Shipstation API secret)
 
@@ -34,7 +34,7 @@ const shipstation = new ShipStation({
 })
 ```
 
-- Optinally, Retry Shipstation API failures via:
+- Optionally, Retry Shipstation API failures via:
     - Set retry `true` to enable default options
     - OR provide an object with any options supported by [axios-retry](https://www.npmjs.com/package/axios-retry)
 
