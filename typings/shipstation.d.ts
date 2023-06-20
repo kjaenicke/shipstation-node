@@ -1,3 +1,4 @@
+import { IAxiosRetryConfig } from 'axios-retry';
 export declare enum RequestMethod {
     GET = "GET",
     POST = "POST",
@@ -12,6 +13,7 @@ export interface IShipstationRequestOptions {
 export interface IShipstationOptions {
     apiKey?: string;
     apiSecret?: string;
+    retry?: IAxiosRetryConfig | boolean;
 }
 export default class Shipstation {
     authorizationToken: string;

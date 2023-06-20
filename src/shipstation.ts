@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import axiosRetry, { IAxiosRetryConfig } from 'axios-retry'
 
 // tslint:disable-next-line:no-var-requires
 const base64 = require('base-64')
@@ -26,6 +27,7 @@ export interface IShipstationRequestOptions {
 export interface IShipstationOptions {
   apiKey?: string
   apiSecret?: string
+  retry?: IAxiosRetryConfig | boolean
 }
 
 export default class Shipstation {
@@ -47,11 +49,19 @@ export default class Shipstation {
     }
 
     this.authorizationToken = base64.encode(
-      `${key}:${secret}`
+        `${key}:${secret}`
     )
 
     // Globally define API ratelimiting
     this.request = stopcock(this.request, rateLimitOpts)
+
+    // Retry failed requests
+    if (options && options.retry) {
+      axiosRetry(
+        axios,
+        typeof options.retry === 'boolean' ? undefined : options.retry
+      )
+    }
   }
 
   public request = ({

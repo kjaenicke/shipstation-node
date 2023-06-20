@@ -34,3 +34,16 @@ const shipstation = new ShipStation({
 })
 ```
 
+- Optinally, Retry Shipstation API failures via:
+    - Set retry `true` to enable default options
+    - OR provide an object with any options supported by [axios-retry](https://www.npmjs.com/package/axios-retry)
+
+```js
+const shipstation = new ShipStation({
+    // default retry config
+    retry: true,
+
+    // OR custom 
+    retry: { retries: 3 }
+})
+```
