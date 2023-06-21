@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var axios_1 = __importDefault(require("axios"));
+var axios_retry_1 = __importDefault(require("axios-retry"));
 var base64 = require('base-64');
 var stopcock = require('stopcock');
 var rateLimitOpts = {
@@ -42,6 +43,9 @@ var Shipstation = (function () {
         }
         this.authorizationToken = base64.encode(key + ":" + secret);
         this.request = stopcock(this.request, rateLimitOpts);
+        if (options && options.retry) {
+            axios_retry_1.default(axios_1.default, typeof options.retry === 'boolean' ? undefined : options.retry);
+        }
     }
     return Shipstation;
 }());
