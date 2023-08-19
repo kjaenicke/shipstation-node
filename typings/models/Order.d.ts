@@ -43,8 +43,8 @@ export interface IOrder {
     insuranceOptions: IInsuranceOptions;
     internationalOptions: IInternationalOptions;
     advancedOptions: IAdvancedOptions;
-    tagIds: number[];
-    userId: string;
+    tagIds?: number[];
+    userId?: string;
     externallyFulfilled: boolean;
     externallyFulfilledBy: string;
     labelMessages?: string;
