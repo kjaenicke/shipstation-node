@@ -1,17 +1,17 @@
-import { IAddress } from "./Address"
-import { IAdvancedOptions } from "./AdvancedOptions"
-import { IDimensions } from "./Dimensions"
-import { IInsuranceOptions } from "./InsuranceOptions"
-import { IInternationalOptions } from "./InternationalOptions"
-import { IPaginatedResult } from "./Pagination"
-import { IWeight } from "./Weight"
+import { IAddress } from './Address'
+import { IAdvancedOptions } from './AdvancedOptions'
+import { IDimensions } from './Dimensions'
+import { IInsuranceOptions } from './InsuranceOptions'
+import { IInternationalOptions } from './InternationalOptions'
+import { IPaginatedResult } from './Pagination'
+import { IWeight } from './Weight'
 
 export type OrderStatus =
-  | "awaiting_payment"
-  | "awaiting_shipment"
-  | "shipped"
-  | "on_hold"
-  | "cancelled"
+  | 'awaiting_payment'
+  | 'awaiting_shipment'
+  | 'shipped'
+  | 'on_hold'
+  | 'cancelled'
 
 export interface IOrder {
   orderId: number
@@ -50,8 +50,8 @@ export interface IOrder {
   insuranceOptions: IInsuranceOptions
   internationalOptions: IInternationalOptions
   advancedOptions: IAdvancedOptions
-  tagIds: number[]
-  userId: string
+  tagIds?: number[]
+  userId?: string
   externallyFulfilled: boolean
   externallyFulfilledBy: string
   labelMessages?: string
@@ -68,7 +68,7 @@ export interface ICreateOrUpdateOrder {
   customerEmail?: string
   billTo: IAddress
   shipTo: IAddress
-  items?: Array<Omit<IOrderItem, "orderItemId" | "createDate" | "modifyDate">>
+  items?: Array<Omit<IOrderItem, 'orderItemId' | 'createDate' | 'modifyDate'>>
   amountPaid?: number
   taxAmount?: number
   shippingAmount?: number
