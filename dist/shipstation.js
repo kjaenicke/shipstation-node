@@ -30,6 +30,9 @@ var Shipstation = (function () {
                 method: method,
                 url: "" + (useBaseUrl ? _this.baseUrl : '') + url
             };
+            if (_this.partnerKey) {
+                opts.headers['x-partner'] = _this.partnerKey;
+            }
             if (data) {
                 opts.data = data;
             }
@@ -38,6 +41,9 @@ var Shipstation = (function () {
         var key = options && options.apiKey ? options.apiKey : process.env.SS_API_KEY;
         var secret = options && options.apiSecret
             ? options.apiSecret : process.env.SS_API_SECRET;
+        this.partnerKey =
+            options && options.partnerKey
+                ? options.partnerKey : process.env.SS_PARTNER_KEY;
         if (!key || !secret) {
             throw new Error("APIKey and API Secret are required! Provided API Key: " + key + " API Secret: " + secret);
         }

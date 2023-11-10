@@ -13,10 +13,12 @@ export interface IShipstationRequestOptions {
 export interface IShipstationOptions {
     apiKey?: string;
     apiSecret?: string;
+    partnerKey?: string;
     retry?: IAxiosRetryConfig | boolean;
 }
 export default class Shipstation {
     authorizationToken: string;
+    partnerKey?: string;
     private baseUrl;
     constructor(options?: IShipstationOptions);
     request: ({ url, method, useBaseUrl, data }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any>>;
