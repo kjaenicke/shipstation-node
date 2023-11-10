@@ -27,19 +27,25 @@ export interface IShipstationRequestOptions {
 export interface IShipstationOptions {
   apiKey?: string
   apiSecret?: string
+  partnerKey?: string
   retry?: IAxiosRetryConfig | boolean
 }
 
 export default class Shipstation {
   public authorizationToken: string
+  public partnerKey?: string
   private baseUrl: string = 'https://ssapi.shipstation.com/'
 
-  constructor(options?: IShipstationOptions) {
+  constructor (options?: IShipstationOptions) {
     const key =
       options && options.apiKey ? options.apiKey : process.env.SS_API_KEY
     const secret =
       options && options.apiSecret
         ? options.apiSecret : process.env.SS_API_SECRET
+
+    this.partnerKey =
+      options && options.partnerKey
+        ? options.partnerKey : process.env.SS_PARTNER_KEY
 
     if (!key || !secret) {
       // tslint:disable-next-line:no-console
@@ -49,7 +55,7 @@ export default class Shipstation {
     }
 
     this.authorizationToken = base64.encode(
-        `${key}:${secret}`
+      `${key}:${secret}`
     )
 
     // Globally define API ratelimiting
@@ -76,6 +82,10 @@ export default class Shipstation {
       },
       method,
       url: `${useBaseUrl ? this.baseUrl : ''}${url}`
+    }
+
+    if (this.partnerKey) {
+      opts.headers['x-partner'] = this.partnerKey
     }
 
     if (data) {
