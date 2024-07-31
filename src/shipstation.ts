@@ -76,11 +76,11 @@ export default class Shipstation {
   }
 
   public request = ({
-                      url,
-                      method = RequestMethod.GET,
-                      useBaseUrl = true,
-                      data
-                    }: IShipstationRequestOptions) => {
+    url,
+    method = RequestMethod.GET,
+    useBaseUrl = true,
+    data
+  }: IShipstationRequestOptions) => {
     const opts: AxiosRequestConfig = {
       headers: {
         Authorization: `Basic ${this.authorizationToken}`
