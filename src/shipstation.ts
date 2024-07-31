@@ -1,5 +1,5 @@
-import axios, { AxiosRequestConfig } from 'axios'
-import axiosRetry, { IAxiosRetryConfig } from 'axios-retry'
+import axios, {AxiosRequestConfig} from 'axios'
+import axiosRetry, {IAxiosRetryConfig} from 'axios-retry'
 
 // tslint:disable-next-line:no-var-requires
 const base64 = require('base-64')
@@ -29,14 +29,16 @@ export interface IShipstationOptions {
   apiSecret?: string
   partnerKey?: string
   retry?: IAxiosRetryConfig | boolean
+  timeout?: number
 }
 
 export default class Shipstation {
   public authorizationToken: string
   public partnerKey?: string
   private baseUrl: string = 'https://ssapi.shipstation.com/'
+  private timeout?: number
 
-  constructor (options?: IShipstationOptions) {
+  constructor(options?: IShipstationOptions) {
     const key =
       options && options.apiKey ? options.apiKey : process.env.SS_API_KEY
     const secret =
@@ -68,14 +70,17 @@ export default class Shipstation {
         typeof options.retry === 'boolean' ? undefined : options.retry
       )
     }
+    if (options && options.timeout) {
+      this.timeout = options.timeout
+    }
   }
 
   public request = ({
-    url,
-    method = RequestMethod.GET,
-    useBaseUrl = true,
-    data
-  }: IShipstationRequestOptions) => {
+                      url,
+                      method = RequestMethod.GET,
+                      useBaseUrl = true,
+                      data
+                    }: IShipstationRequestOptions) => {
     const opts: AxiosRequestConfig = {
       headers: {
         Authorization: `Basic ${this.authorizationToken}`
@@ -90,6 +95,10 @@ export default class Shipstation {
 
     if (data) {
       opts.data = data
+    }
+
+    if (this.timeout) {
+      opts.timeout = this.timeout
     }
 
     return axios.request(opts)
