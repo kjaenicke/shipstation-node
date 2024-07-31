@@ -1,5 +1,5 @@
-import axios, {AxiosRequestConfig} from 'axios'
-import axiosRetry, {IAxiosRetryConfig} from 'axios-retry'
+import axios, { AxiosRequestConfig } from 'axios'
+import axiosRetry, { IAxiosRetryConfig } from 'axios-retry'
 
 // tslint:disable-next-line:no-var-requires
 const base64 = require('base-64')
@@ -38,7 +38,7 @@ export default class Shipstation {
   private baseUrl: string = 'https://ssapi.shipstation.com/'
   private timeout?: number
 
-  constructor(options?: IShipstationOptions) {
+  constructor (options?: IShipstationOptions) {
     const key =
       options && options.apiKey ? options.apiKey : process.env.SS_API_KEY
     const secret =
@@ -96,11 +96,9 @@ export default class Shipstation {
     if (data) {
       opts.data = data
     }
-
-    if (this.timeout) {
+    if (this.timeout){
       opts.timeout = this.timeout
     }
-
     return axios.request(opts)
   }
 }
