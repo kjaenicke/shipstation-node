@@ -29,12 +29,14 @@ export interface IShipstationOptions {
   apiSecret?: string
   partnerKey?: string
   retry?: IAxiosRetryConfig | boolean
+  timeout?: number
 }
 
 export default class Shipstation {
   public authorizationToken: string
   public partnerKey?: string
   private baseUrl: string = 'https://ssapi.shipstation.com/'
+  private timeout?: number
 
   constructor (options?: IShipstationOptions) {
     const key =
@@ -68,6 +70,9 @@ export default class Shipstation {
         typeof options.retry === 'boolean' ? undefined : options.retry
       )
     }
+    if (options && options.timeout) {
+      this.timeout = options.timeout
+    }
   }
 
   public request = ({
@@ -91,7 +96,9 @@ export default class Shipstation {
     if (data) {
       opts.data = data
     }
-
+    if (this.timeout){
+      opts.timeout = this.timeout
+    }
     return axios.request(opts)
   }
 }
