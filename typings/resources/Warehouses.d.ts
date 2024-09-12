@@ -1,4 +1,4 @@
-import { IWarehouse, ICreateOrUpdateWarehouse, IUpdateOrDeleteWarehouseResponse } from '../models';
+import { ICreateOrUpdateWarehouse, IUpdateOrDeleteWarehouseResponse, IWarehouse } from '../models';
 import Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 export declare class Warehouses extends BaseResource<IWarehouse> {

@@ -2,6 +2,7 @@ import { IAxiosRetryConfig } from 'axios-retry';
 export declare enum RequestMethod {
     GET = "GET",
     POST = "POST",
+    PUT = "PUT",
     DELETE = "DELETE"
 }
 export interface IShipstationRequestOptions {
@@ -23,5 +24,5 @@ export default class Shipstation {
     private baseUrl;
     private timeout?;
     constructor(options?: IShipstationOptions);
-    request: ({ url, method, useBaseUrl, data }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any>>;
+    request: ({ url, method, useBaseUrl, data }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any, any>>;
 }

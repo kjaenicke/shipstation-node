@@ -68,7 +68,7 @@ var Warehouses = (function (_super) {
                         url = this.baseUrl + query;
                         return [4, this.shipstation.request({
                                 url: url,
-                                method: shipstation_1.RequestMethod.GET,
+                                method: shipstation_1.RequestMethod.GET
                             })];
                     case 1:
                         response = _a.sent();
