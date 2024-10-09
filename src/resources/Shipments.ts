@@ -1,4 +1,6 @@
 import { IShipment, IShippingRate, IShippingRateOptions } from '../models'
+import { ICreateLabelOptions } from '../models/CreateLabelOptions'
+import { IVoidLabel, IVoidLabelOptions } from '../models/VoidLabel'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
@@ -27,5 +29,27 @@ export class Shipments extends BaseResource<IShipment> {
       data,
     })
     return response.data as IShippingRate[]
+  }
+
+  public async createLabel(data: ICreateLabelOptions): Promise<IShipment> {
+    const url = this.baseUrl + '/createlabel'
+
+    const response = await this.shipstation.request({
+      url,
+      method: RequestMethod.POST,
+      data
+    })
+    return response.data as IShipment
+  }
+
+  public async voidLabel(data: IVoidLabelOptions): Promise<IVoidLabel> {
+    const url = this.baseUrl + '/voidlabel'
+
+    const response = await this.shipstation.request({
+      url,
+      method: RequestMethod.POST,
+      data
+    })
+    return response.data as IVoidLabel
   }
 }
