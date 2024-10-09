@@ -15,7 +15,7 @@ export interface ICreateLabelOptions {
     weight: IWeight;
     dimensions?: IDimensions;
     shipFrom: IAddress;
-    shopTo: IAddress;
+    shipTo: IAddress;
     insuranceOptions?: IInsuranceOptions;
     internationalOptions?: IInternationalOptions;
     advancedOptions?: IAdvancedOptions;
