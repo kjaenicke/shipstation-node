@@ -24,5 +24,5 @@ export default class Shipstation {
     private baseUrl;
     private timeout?;
     constructor(options?: IShipstationOptions);
-    request: ({ url, method, useBaseUrl, data }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any, any>>;
+    request: ({ url, method, useBaseUrl, data, }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any, any>>;
 }
