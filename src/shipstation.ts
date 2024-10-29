@@ -8,14 +8,14 @@ const stopcock = require('stopcock')
 
 const rateLimitOpts = {
   limit: 40,
-  interval: 1000 * 40
+  interval: 1000 * 40,
 }
 
 export enum RequestMethod {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
-  DELETE = 'DELETE'
+  DELETE = 'DELETE',
 }
 
 export interface IShipstationRequestOptions {
@@ -57,9 +57,7 @@ export default class Shipstation {
       )
     }
 
-    this.authorizationToken = base64.encode(
-      `${key}:${secret}`
-    )
+    this.authorizationToken = base64.encode(`${key}:${secret}`)
 
     // Globally define API ratelimiting
     this.request = stopcock(this.request, rateLimitOpts)
@@ -80,16 +78,20 @@ export default class Shipstation {
     url,
     method = RequestMethod.GET,
     useBaseUrl = true,
-    data
+    data,
   }: IShipstationRequestOptions) => {
     const opts: AxiosRequestConfig = {
       headers: {
-        Authorization: `Basic ${this.authorizationToken}`
+        Authorization: `Basic ${this.authorizationToken}`,
       },
       method,
-      url: `${useBaseUrl ? this.baseUrl : ''}${url}`
+      url: `${useBaseUrl ? this.baseUrl : ''}${url}`,
     }
 
+    // Ensure opts.headers exists before setting a property on it
+    if (!opts.headers) {
+      opts.headers = {}
+    }
     if (this.partnerKey) {
       opts.headers['x-partner'] = this.partnerKey
     }
@@ -97,7 +99,7 @@ export default class Shipstation {
     if (data) {
       opts.data = data
     }
-    if (this.timeout){
+    if (this.timeout) {
       opts.timeout = this.timeout
     }
     return axios.request(opts)

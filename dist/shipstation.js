@@ -9,7 +9,7 @@ var base64 = require('base-64');
 var stopcock = require('stopcock');
 var rateLimitOpts = {
     limit: 40,
-    interval: 1000 * 40
+    interval: 1000 * 40,
 };
 var RequestMethod;
 (function (RequestMethod) {
@@ -26,11 +26,14 @@ var Shipstation = (function () {
             var url = _a.url, _b = _a.method, method = _b === void 0 ? RequestMethod.GET : _b, _c = _a.useBaseUrl, useBaseUrl = _c === void 0 ? true : _c, data = _a.data;
             var opts = {
                 headers: {
-                    Authorization: "Basic " + _this.authorizationToken
+                    Authorization: "Basic " + _this.authorizationToken,
                 },
                 method: method,
-                url: "" + (useBaseUrl ? _this.baseUrl : '') + url
+                url: "" + (useBaseUrl ? _this.baseUrl : '') + url,
             };
+            if (!opts.headers) {
+                opts.headers = {};
+            }
             if (_this.partnerKey) {
                 opts.headers['x-partner'] = _this.partnerKey;
             }

@@ -8,11 +8,13 @@ import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
 import { IShipstationRequestOptions, IShipstationOptions, RequestMethod } from './shipstation';
+import { Products } from './resources/Products';
 export default class ShipStationAPI {
     private ss;
     orders: Orders;
     carriers: Carriers;
     fulfillments: Fulfillments;
+    products: Products;
     stores: Stores;
     shipments: Shipments;
     warehouses: Warehouses;

@@ -13,6 +13,7 @@ import Shipstation, {
   IShipstationOptions,
   RequestMethod,
 } from './shipstation'
+import { Products } from './resources/Products'
 
 export default class ShipStationAPI {
   private ss: Shipstation
@@ -20,6 +21,7 @@ export default class ShipStationAPI {
   public orders: Orders
   public carriers: Carriers
   public fulfillments: Fulfillments
+  public products: Products
   public stores: Stores
   public shipments: Shipments
   public warehouses: Warehouses
@@ -34,6 +36,7 @@ export default class ShipStationAPI {
     this.orders = new Orders(this.ss)
     this.carriers = new Carriers(this.ss)
     this.fulfillments = new Fulfillments(this.ss)
+    this.products = new Products(this.ss)
     this.stores = new Stores(this.ss)
     this.shipments = new Shipments(this.ss)
     this.warehouses = new Warehouses(this.ss)

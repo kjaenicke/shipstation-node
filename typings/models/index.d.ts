@@ -7,6 +7,7 @@ export * from './InsuranceOptions';
 export * from './InternationalOptions';
 export * from './Order';
 export * from './Pagination';
+export * from './Product';
 export * from './Shipment';
 export * from './ShippingRate';
 export * from './ShippingRateOptions';
