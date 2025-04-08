@@ -15,4 +15,4 @@ export * from './Store';
 export * from './Warehouse';
 export * from './Webhook';
 export * from './Weight';
-export declare type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;

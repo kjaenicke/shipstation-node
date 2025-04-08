@@ -2,8 +2,6 @@ import axios, { AxiosRequestConfig } from 'axios'
 import axiosRetry, { IAxiosRetryConfig } from 'axios-retry'
 
 // tslint:disable-next-line:no-var-requires
-const base64 = require('base-64')
-// tslint:disable-next-line:no-var-requires
 const stopcock = require('stopcock')
 
 const rateLimitOpts = {
@@ -39,16 +37,18 @@ export default class Shipstation {
   private baseUrl: string = 'https://ssapi.shipstation.com/'
   private timeout?: number
 
-  constructor (options?: IShipstationOptions) {
+  constructor(options?: IShipstationOptions) {
     const key =
       options && options.apiKey ? options.apiKey : process.env.SS_API_KEY
     const secret =
       options && options.apiSecret
-        ? options.apiSecret : process.env.SS_API_SECRET
+        ? options.apiSecret
+        : process.env.SS_API_SECRET
 
     this.partnerKey =
       options && options.partnerKey
-        ? options.partnerKey : process.env.SS_PARTNER_KEY
+        ? options.partnerKey
+        : process.env.SS_PARTNER_KEY
 
     if (!key || !secret) {
       // tslint:disable-next-line:no-console
@@ -57,7 +57,7 @@ export default class Shipstation {
       )
     }
 
-    this.authorizationToken = base64.encode(`${key}:${secret}`)
+    this.authorizationToken = Buffer.from(`${key}:${secret}`).toString('base64')
 
     // Globally define API ratelimiting
     this.request = stopcock(this.request, rateLimitOpts)

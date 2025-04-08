@@ -5,7 +5,7 @@ import { IInsuranceOptions } from './InsuranceOptions';
 import { IInternationalOptions } from './InternationalOptions';
 import { IPaginatedResult } from './Pagination';
 import { IWeight } from './Weight';
-export declare type OrderStatus = 'awaiting_payment' | 'awaiting_shipment' | 'shipped' | 'on_hold' | 'cancelled';
+export type OrderStatus = 'awaiting_payment' | 'awaiting_shipment' | 'shipped' | 'on_hold' | 'cancelled';
 export interface IOrder {
     orderId: number;
     orderNumber: string;
