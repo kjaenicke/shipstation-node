@@ -9,7 +9,7 @@ import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
 import type { IShipstationRequestOptions, IShipstationOptions } from './shipstation';
-import Shipstation, { RequestMethod } from './shipstation';
+import Shipstation from './shipstation';
 import { Products } from './resources/Products';
 
 export default class ShipStationAPI {
@@ -41,4 +41,4 @@ export default class ShipStationAPI {
 }
 
 export type { IShipstationRequestOptions };
-export { Models, RequestMethod };
+export { Models };

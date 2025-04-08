@@ -1,6 +1,5 @@
 import type { ICarrier } from '../models';
 import type Shipstation from '../shipstation';
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 
 export class Carriers extends BaseResource<ICarrier> {
@@ -9,11 +8,9 @@ export class Carriers extends BaseResource<ICarrier> {
   }
 
   public async getAll(): Promise<Array<ICarrier>> {
-    const url = this.baseUrl;
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.GET
+    return this.shipstation.request<Array<ICarrier>>({
+      url: this.baseUrl,
+      method: 'GET'
     });
-    return response.data as Array<ICarrier>;
   }
 }
