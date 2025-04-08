@@ -22,4 +22,5 @@ export default class ShipStationAPI {
     request: (args: IShipstationRequestOptions) => Promise<AxiosResponse<any>>;
     constructor(options?: IShipstationOptions);
 }
-export { Models, IShipstationRequestOptions, RequestMethod };
+export type { IShipstationRequestOptions };
+export { Models, RequestMethod };

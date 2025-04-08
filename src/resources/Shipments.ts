@@ -5,7 +5,7 @@ import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
 export class Shipments extends BaseResource<IShipment> {
-  constructor(protected shipstation: Shipstation) {
+  constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'shipments')
   }
 
@@ -15,7 +15,7 @@ export class Shipments extends BaseResource<IShipment> {
 
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET
+      method: RequestMethod.GET,
     })
     return response.data as IShipment[]
   }
@@ -37,7 +37,7 @@ export class Shipments extends BaseResource<IShipment> {
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.POST,
-      data
+      data,
     })
     return response.data as IShipment
   }
@@ -48,7 +48,7 @@ export class Shipments extends BaseResource<IShipment> {
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.POST,
-      data
+      data,
     })
     return response.data as IVoidLabel
   }

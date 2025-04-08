@@ -8,7 +8,7 @@ export interface IGetAllStoresOptions {
 }
 
 export class Stores extends BaseResource<IStore> {
-  constructor(protected shipstation: Shipstation) {
+  constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'stores')
   }
 
@@ -31,7 +31,7 @@ export class Stores extends BaseResource<IStore> {
 
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET
+      method: RequestMethod.GET,
     })
 
     return response.data as IStore[]

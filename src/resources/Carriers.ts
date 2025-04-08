@@ -3,7 +3,7 @@ import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
 export class Carriers extends BaseResource<ICarrier> {
-  constructor(protected shipstation: Shipstation) {
+  constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'carriers')
   }
 
@@ -11,7 +11,7 @@ export class Carriers extends BaseResource<ICarrier> {
     const url = this.baseUrl
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET
+      method: RequestMethod.GET,
     })
     return response.data as ICarrier[]
   }

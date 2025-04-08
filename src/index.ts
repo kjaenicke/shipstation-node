@@ -45,4 +45,5 @@ export default class ShipStationAPI {
   }
 }
 
-export { Models, IShipstationRequestOptions, RequestMethod }
+export type { IShipstationRequestOptions }
+export { Models, RequestMethod }

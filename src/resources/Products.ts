@@ -1,9 +1,13 @@
-import { IProduct, IProductPaginationResult, IProductUpdateResponse } from '../models'
+import {
+  IProduct,
+  IProductPaginationResult,
+  IProductUpdateResponse,
+} from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
 export class Products extends BaseResource<IProduct> {
-  constructor(protected shipstation: Shipstation) {
+  constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'products')
   }
 
@@ -27,7 +31,7 @@ export class Products extends BaseResource<IProduct> {
   /**
    * Create or update a product
    * @param {IProduct} data - Product data
-   * @returns {Promise<IProductUpdateResponse>} 
+   * @returns {Promise<IProductUpdateResponse>}
    * @see https://www.shipstation.com/docs/api/products/update/
    */
   public async update(data: IProduct): Promise<IProductUpdateResponse> {

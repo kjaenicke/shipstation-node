@@ -1,24 +1,23 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import axiosRetry, { IAxiosRetryConfig } from 'axios-retry'
 
-// tslint:disable-next-line:no-var-requires
 const stopcock = require('stopcock')
 
-const rateLimitOpts = {
+const RATE_LIMIT_OPTS = {
   limit: 40,
   interval: 1000 * 40,
 }
 
-export enum RequestMethod {
-  GET = 'GET',
-  POST = 'POST',
-  PUT = 'PUT',
-  DELETE = 'DELETE',
-}
+export const RequestMethod = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE',
+} as const
 
 export interface IShipstationRequestOptions {
   url: string
-  method?: RequestMethod
+  method?: keyof typeof RequestMethod
   useBaseUrl?: boolean
   data?: any
 }
@@ -51,7 +50,6 @@ export default class Shipstation {
         : process.env.SS_PARTNER_KEY
 
     if (!key || !secret) {
-      // tslint:disable-next-line:no-console
       throw new Error(
         `APIKey and API Secret are required! Provided API Key: ${key} API Secret: ${secret}`
       )
@@ -60,7 +58,7 @@ export default class Shipstation {
     this.authorizationToken = Buffer.from(`${key}:${secret}`).toString('base64')
 
     // Globally define API ratelimiting
-    this.request = stopcock(this.request, rateLimitOpts)
+    this.request = stopcock(this.request, RATE_LIMIT_OPTS)
 
     // Retry failed requests
     if (options && options.retry) {

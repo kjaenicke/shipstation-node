@@ -1,13 +1,13 @@
 import { IAxiosRetryConfig } from 'axios-retry';
-export declare enum RequestMethod {
-    GET = "GET",
-    POST = "POST",
-    PUT = "PUT",
-    DELETE = "DELETE"
-}
+export declare const RequestMethod: {
+    readonly GET: "GET";
+    readonly POST: "POST";
+    readonly PUT: "PUT";
+    readonly DELETE: "DELETE";
+};
 export interface IShipstationRequestOptions {
     url: string;
-    method?: RequestMethod;
+    method?: keyof typeof RequestMethod;
     useBaseUrl?: boolean;
     data?: any;
 }

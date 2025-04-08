@@ -4,13 +4,13 @@ import {
   IOrder,
   IOrderPaginationResult,
   ICreateLabel,
-  ICreateLabelResponse
+  ICreateLabelResponse,
 } from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
 export class Orders extends BaseResource<IOrder> {
-  constructor(protected shipstation: Shipstation) {
+  constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'orders')
   }
 
@@ -20,7 +20,7 @@ export class Orders extends BaseResource<IOrder> {
 
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET
+      method: RequestMethod.GET,
     })
     return response.data as IOrderPaginationResult
   }
@@ -30,7 +30,7 @@ export class Orders extends BaseResource<IOrder> {
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.POST,
-      data
+      data,
     })
     return response.data as IOrder
   }
@@ -42,23 +42,20 @@ export class Orders extends BaseResource<IOrder> {
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.POST,
-      data
+      data,
     })
 
     return response.data as ICreateOrUpdateOrderBulkResponse
   }
 
-  public async createLabel(
-    data: ICreateLabel
-  ): Promise<ICreateLabelResponse> {
+  public async createLabel(data: ICreateLabel): Promise<ICreateLabelResponse> {
     const url = `${this.baseUrl}/createlabelfororder`
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.POST,
-      data
+      data,
     })
 
     return response.data as ICreateLabelResponse
   }
-
 }

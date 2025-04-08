@@ -8,7 +8,7 @@ import Shipstation, { RequestMethod } from '../shipstation'
 import { BaseResource } from './Base'
 
 export class Webhooks extends BaseResource<IWebhook> {
-  constructor(protected shipstation: Shipstation) {
+  constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'webhooks')
   }
 
