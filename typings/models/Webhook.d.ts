@@ -1,4 +1,4 @@
-export declare type WebhookEventType = 'ORDER_NOTIFY' | 'ITEM_ORDER_NOTIFY' | 'SHIP_NOTIFY' | 'ITEM_SHIP_NOTIFY';
+export type WebhookEventType = 'ORDER_NOTIFY' | 'ITEM_ORDER_NOTIFY' | 'SHIP_NOTIFY' | 'ITEM_SHIP_NOTIFY';
 export interface IWebhook {
     IsLabelAPIHook: boolean;
     WebHookID: number;

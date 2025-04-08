@@ -1,4 +1,4 @@
-export declare type InternationalOptionsContentType = 'merchandise' | 'documents' | 'gift' | 'returned_goods' | 'sample';
+export type InternationalOptionsContentType = 'merchandise' | 'documents' | 'gift' | 'returned_goods' | 'sample';
 export interface ICustomsItem {
     customsItemId: number;
     description: string;

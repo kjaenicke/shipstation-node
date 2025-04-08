@@ -1,4 +1,4 @@
-export declare type AddressVerificationType = 'Address not yet validated' | 'Address validated successfully' | 'Address validation warning' | 'Address validation failed';
+export type AddressVerificationType = 'Address not yet validated' | 'Address validated successfully' | 'Address validation warning' | 'Address validation failed';
 export interface IAddress {
     name: string;
     company?: string;
