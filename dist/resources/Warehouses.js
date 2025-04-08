@@ -20,7 +20,7 @@ export class Warehouses extends BaseResource {
             const url = this.baseUrl + query;
             const response = yield this.shipstation.request({
                 url,
-                method: RequestMethod.GET,
+                method: RequestMethod.GET
             });
             return response.data;
         });
@@ -31,7 +31,7 @@ export class Warehouses extends BaseResource {
             const response = yield this.shipstation.request({
                 url,
                 method: RequestMethod.POST,
-                data,
+                data
             });
             return response.data;
         });
@@ -42,7 +42,7 @@ export class Warehouses extends BaseResource {
             const response = yield this.shipstation.request({
                 url,
                 method: RequestMethod.PUT,
-                data,
+                data
             });
             return response.data;
         });
@@ -52,7 +52,7 @@ export class Warehouses extends BaseResource {
             const url = `${this.baseUrl}/${id}`;
             const response = yield this.shipstation.request({
                 url,
-                method: RequestMethod.DELETE,
+                method: RequestMethod.DELETE
             });
             return response.data;
         });

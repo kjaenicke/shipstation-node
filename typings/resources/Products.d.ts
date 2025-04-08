@@ -1,5 +1,5 @@
-import { IProduct, IProductPaginationResult, IProductUpdateResponse } from '../models';
-import Shipstation from '../shipstation';
+import type { IProduct, IProductPaginationResult, IProductUpdateResponse } from '../models';
+import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 export declare class Products extends BaseResource<IProduct> {
     protected shipstation: Shipstation;

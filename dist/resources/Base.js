@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { RequestMethod } from "../shipstation";
+import { RequestMethod } from '../shipstation';
 export class BaseResource {
     constructor(shipstation, baseUrl) {
         this.shipstation = shipstation;
@@ -26,10 +26,10 @@ export class BaseResource {
         });
     }
     buildQueryStringFromParams(params) {
-        let qs = "";
-        if (typeof params !== "undefined") {
+        let qs = '';
+        if (typeof params !== 'undefined') {
             Object.entries(params).forEach(([key, value], index) => {
-                const qsStart = index === 0 ? "?" : "&";
+                const qsStart = index === 0 ? '?' : '&';
                 qs += `${qsStart}${key}=${value}`;
             });
         }

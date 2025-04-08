@@ -1,5 +1,5 @@
-import { IFulfillment, IFulfillmentPaginationResult } from '../models';
-import Shipstation from '../shipstation';
+import type { IFulfillment, IFulfillmentPaginationResult } from '../models';
+import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 export declare class Fulfillments extends BaseResource<IFulfillment> {
     protected shipstation: Shipstation;

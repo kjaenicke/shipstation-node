@@ -1,10 +1,10 @@
-import { IAddress } from './Address';
-import { IAdvancedOptions } from './AdvancedOptions';
-import { IDimensions } from './Dimensions';
-import { IInsuranceOptions } from './InsuranceOptions';
-import { IInternationalOptions } from './InternationalOptions';
-import { IPaginatedResult } from './Pagination';
-import { IWeight } from './Weight';
+import type { IAddress } from './Address';
+import type { IAdvancedOptions } from './AdvancedOptions';
+import type { IDimensions } from './Dimensions';
+import type { IInsuranceOptions } from './InsuranceOptions';
+import type { IInternationalOptions } from './InternationalOptions';
+import type { IPaginatedResult } from './Pagination';
+import type { IWeight } from './Weight';
 export type OrderStatus = 'awaiting_payment' | 'awaiting_shipment' | 'shipped' | 'on_hold' | 'cancelled';
 export interface IOrder {
     orderId: number;
@@ -21,7 +21,7 @@ export interface IOrder {
     customerEmail: string;
     billTo: IAddress;
     shipTo: IAddress;
-    items: IOrderItem[];
+    items: Array<IOrderItem>;
     orderTotal: number;
     amountPaid: number;
     taxAmount: number;
@@ -43,7 +43,7 @@ export interface IOrder {
     insuranceOptions: IInsuranceOptions;
     internationalOptions: IInternationalOptions;
     advancedOptions: IAdvancedOptions;
-    tagIds?: number[];
+    tagIds?: Array<number>;
     userId?: string;
     externallyFulfilled: boolean;
     externallyFulfilledBy: string;
@@ -80,7 +80,7 @@ export interface ICreateOrUpdateOrder {
     insuranceOptions?: IInsuranceOptions;
     internationalOptions?: IInternationalOptions;
     advancedOptions?: IAdvancedOptions;
-    tagIds?: number[];
+    tagIds?: Array<number>;
 }
 export interface IOrderItem {
     orderItemId: number;
@@ -94,7 +94,7 @@ export interface IOrderItem {
     taxAmount?: number;
     shippingAmount?: number;
     warehouseLocation?: string;
-    options?: IItemOption[];
+    options?: Array<IItemOption>;
     productId?: number;
     fulfillmentSku?: string;
     adjustment: boolean;
@@ -120,7 +120,7 @@ export interface IItemOption {
     value: string;
 }
 export interface IOrderPaginationResult extends IPaginatedResult {
-    orders: IOrder[];
+    orders: Array<IOrder>;
 }
 interface IBulkCreateOrUpdateOrderResponse {
     orderId: string;
@@ -130,7 +130,7 @@ interface IBulkCreateOrUpdateOrderResponse {
     errorMessage: string | null;
 }
 export interface ICreateOrUpdateOrderBulkResponse {
-    results: IBulkCreateOrUpdateOrderResponse[];
+    results: Array<IBulkCreateOrUpdateOrderResponse>;
     hasErrors: boolean;
 }
 export interface ICreateLabelResponse {

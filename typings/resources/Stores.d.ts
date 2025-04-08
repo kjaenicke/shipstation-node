@@ -1,5 +1,5 @@
-import { IStore } from '../models';
-import Shipstation from '../shipstation';
+import type { IStore } from '../models';
+import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 export interface IGetAllStoresOptions {
     showInactive?: boolean;
@@ -8,5 +8,5 @@ export interface IGetAllStoresOptions {
 export declare class Stores extends BaseResource<IStore> {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(opts?: IGetAllStoresOptions): Promise<IStore[]>;
+    getAll(opts?: IGetAllStoresOptions): Promise<Array<IStore>>;
 }

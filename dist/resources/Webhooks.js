@@ -19,7 +19,7 @@ export class Webhooks extends BaseResource {
             const url = this.baseUrl;
             const response = yield this.shipstation.request({
                 url,
-                method: RequestMethod.GET,
+                method: RequestMethod.GET
             });
             return response.data;
         });
@@ -30,7 +30,7 @@ export class Webhooks extends BaseResource {
             const response = yield this.shipstation.request({
                 url,
                 method: RequestMethod.POST,
-                data,
+                data
             });
             return response.data;
         });
@@ -40,7 +40,7 @@ export class Webhooks extends BaseResource {
             const url = `${this.baseUrl}/${id}`;
             yield this.shipstation.request({
                 url,
-                method: RequestMethod.DELETE,
+                method: RequestMethod.DELETE
             });
             return null;
         });

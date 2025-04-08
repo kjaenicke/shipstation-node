@@ -1,13 +1,13 @@
-import { IShipment, IShippingRate, IShippingRateOptions } from '../models';
-import { ICreateLabelOptions } from '../models/CreateLabelOptions';
-import { IVoidLabel, IVoidLabelOptions } from '../models/VoidLabel';
-import Shipstation from '../shipstation';
+import type { IShipment, IShippingRate, IShippingRateOptions } from '../models';
+import type { ICreateLabelOptions } from '../models/CreateLabelOptions';
+import type { IVoidLabel, IVoidLabelOptions } from '../models/VoidLabel';
+import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 export declare class Shipments extends BaseResource<IShipment> {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(opts?: object): Promise<IShipment[]>;
-    getRates(data?: IShippingRateOptions): Promise<IShippingRate[]>;
+    getAll(opts?: object): Promise<Array<IShipment>>;
+    getRates(data?: IShippingRateOptions): Promise<Array<IShippingRate>>;
     createLabel(data: ICreateLabelOptions): Promise<IShipment>;
     voidLabel(data: IVoidLabelOptions): Promise<IVoidLabel>;
 }

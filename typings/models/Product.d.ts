@@ -1,6 +1,6 @@
-import { IPaginatedResult } from "./Pagination";
+import type { IPaginatedResult } from './Pagination';
 export interface IProduct {
-    aliases: IProductAlias[] | null;
+    aliases: Array<IProductAlias> | null;
     productId: number;
     sku: string | null;
     name: string | null;
@@ -17,7 +17,7 @@ export interface IProduct {
     createDate: string | null;
     modifyDate: string | null;
     active: boolean | null;
-    productCategory: (number | string)[] | null;
+    productCategory: Array<number | string> | null;
     productType: string | null;
     warehouseLocation: string | null;
     defaultCarrierCode: string | null;
@@ -33,10 +33,10 @@ export interface IProduct {
     customsTariffNo: string | null;
     customsCountryCode: string | null;
     noCustoms: boolean | null;
-    tags: (number | string)[] | null;
+    tags: Array<number | string> | null;
 }
 export interface IProductPaginationResult extends IPaginatedResult {
-    products: IProduct[];
+    products: Array<IProduct>;
 }
 export interface IProductUpdateResponse {
     success: boolean;

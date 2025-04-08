@@ -23,15 +23,12 @@ export class Stores extends BaseResource {
                 }
                 if (typeof opts.marketplaceId !== 'undefined') {
                     const marketplaceQuery = `marketplaceId=${opts.marketplaceId}`;
-                    url +=
-                        url.indexOf('?') > -1
-                            ? `&${marketplaceQuery}`
-                            : `?${marketplaceQuery}`;
+                    url += url.includes('?') ? `&${marketplaceQuery}` : `?${marketplaceQuery}`;
                 }
             }
             const response = yield this.shipstation.request({
                 url,
-                method: RequestMethod.GET,
+                method: RequestMethod.GET
             });
             return response.data;
         });

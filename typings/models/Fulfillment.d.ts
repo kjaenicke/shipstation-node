@@ -1,5 +1,5 @@
-import { IAddress } from './Address';
-import { IPaginatedResult } from './Pagination';
+import type { IAddress } from './Address';
+import type { IPaginatedResult } from './Pagination';
 export interface IFulfillment {
     fulfillmentId: number;
     orderId: number;
@@ -22,5 +22,5 @@ export interface IFulfillment {
     shipTo: IAddress;
 }
 export interface IFulfillmentPaginationResult extends IPaginatedResult {
-    fulfillments: IFulfillment[];
+    fulfillments: Array<IFulfillment>;
 }

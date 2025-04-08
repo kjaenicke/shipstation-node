@@ -6,7 +6,7 @@ import { Shipments } from './resources/Shipments';
 import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
-import Shipstation, { RequestMethod, } from './shipstation';
+import Shipstation, { RequestMethod } from './shipstation';
 import { Products } from './resources/Products';
 export default class ShipStationAPI {
     constructor(options) {

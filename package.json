@@ -1,31 +1,42 @@
 {
-  "name": "shipstation-node",
-  "version": "0.25.0",
-  "description": "Unofficial Node.js wrapper for the Shipstation API",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc"
-  },
   "author": "Keenan Jaenicke <kjaenick@gmail.com>",
-  "license": "MIT",
-  "types": "typings/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/kjaenicke/shipstation-node/issues"
+  },
   "dependencies": {
     "axios": "^1.8.4",
     "axios-retry": "^4.5.0",
     "stopcock": "^1.0.0"
   },
+  "description": "Unofficial Node.js wrapper for the Shipstation API",
   "devDependencies": {
     "@types/node": "^18",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.29.1"
   },
+  "homepage": "https://github.com/kjaenicke/shipstation-node#readme",
+  "keywords": [
+    "shipstation"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "shipstation-node",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kjaenicke/shipstation-node.git"
   },
-  "keywords": ["shipstation"],
-  "bugs": {
-    "url": "https://github.com/kjaenicke/shipstation-node/issues"
+  "scripts": {
+    "build": "tsc",
+    "format": "npm run lint -- --fix",
+    "lint": "eslint --max-warnings 0 --config=eslint.config.js"
   },
-  "homepage": "https://github.com/kjaenicke/shipstation-node#readme"
+  "types": "typings/index.d.ts",
+  "version": "0.25.0"
 }

@@ -19,7 +19,7 @@ export class Carriers extends BaseResource {
             const url = this.baseUrl;
             const response = yield this.shipstation.request({
                 url,
-                method: RequestMethod.GET,
+                method: RequestMethod.GET
             });
             return response.data;
         });

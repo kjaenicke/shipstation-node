@@ -20,7 +20,7 @@ export class Products extends BaseResource {
             const url = this.baseUrl + query;
             const response = yield this.shipstation.request({
                 url,
-                method: RequestMethod.GET,
+                method: RequestMethod.GET
             });
             return response.data;
         });
@@ -34,7 +34,7 @@ export class Products extends BaseResource {
             const response = yield this.shipstation.request({
                 url,
                 method: RequestMethod.PUT,
-                data,
+                data
             });
             return response.data;
         });

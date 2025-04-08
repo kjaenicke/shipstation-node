@@ -1,7 +1,7 @@
-export type Unit = 'pounds' | 'ounces' | 'grams'
+export type Unit = 'pounds' | 'ounces' | 'grams';
 
 export interface IWeight {
-  value: number
-  units: Unit
-  WeightUnits?: number
+  value: number;
+  units: Unit;
+  WeightUnits?: number;
 }
