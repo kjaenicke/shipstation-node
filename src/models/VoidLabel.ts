@@ -1,8 +1,8 @@
 export interface IVoidLabelOptions {
-    shipmentId: number;
+  shipmentId: number;
 }
 
 export interface IVoidLabel {
-    approved: boolean;
-    message: string;
+  approved: boolean;
+  message: string;
 }

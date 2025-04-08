@@ -1,4 +1,4 @@
-import { IAddress } from './Address';
+import type { IAddress } from './Address';
 export interface IWarehouse {
     warehouseId: number;
     warehouseName: string | null;

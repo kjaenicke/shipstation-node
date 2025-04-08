@@ -1,5 +1,5 @@
 export interface IPaginatedResult {
-  total: number
-  pages: number
-  page: number
+  total: number;
+  pages: number;
+  page: number;
 }

@@ -13,7 +13,7 @@ export interface IWebhook {
     Active: boolean;
 }
 export interface IWebhookResult {
-    webhooks: IWebhook[];
+    webhooks: Array<IWebhook>;
 }
 export interface ISubscribeToWebhookOpts {
     target_url: string;

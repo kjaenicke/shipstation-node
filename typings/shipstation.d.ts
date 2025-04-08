@@ -1,13 +1,13 @@
-import { IAxiosRetryConfig } from 'axios-retry';
-export declare enum RequestMethod {
-    GET = "GET",
-    POST = "POST",
-    PUT = "PUT",
-    DELETE = "DELETE"
-}
+import type { IAxiosRetryConfig } from 'axios-retry';
+export declare const RequestMethod: {
+    readonly GET: "GET";
+    readonly POST: "POST";
+    readonly PUT: "PUT";
+    readonly DELETE: "DELETE";
+};
 export interface IShipstationRequestOptions {
     url: string;
-    method?: RequestMethod;
+    method?: keyof typeof RequestMethod;
     useBaseUrl?: boolean;
     data?: any;
 }
@@ -21,8 +21,8 @@ export interface IShipstationOptions {
 export default class Shipstation {
     authorizationToken: string;
     partnerKey?: string;
-    private baseUrl;
-    private timeout?;
+    private readonly baseUrl;
+    private readonly timeout?;
     constructor(options?: IShipstationOptions);
-    request: ({ url, method, useBaseUrl, data, }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any, any>>;
+    request: ({ url, method, useBaseUrl, data }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any, any>>;
 }

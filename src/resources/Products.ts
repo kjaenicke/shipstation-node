@@ -1,10 +1,11 @@
-import { IProduct, IProductPaginationResult, IProductUpdateResponse } from '../models'
-import Shipstation, { RequestMethod } from '../shipstation'
-import { BaseResource } from './Base'
+import type { IProduct, IProductPaginationResult, IProductUpdateResponse } from '../models';
+import type Shipstation from '../shipstation';
+import { RequestMethod } from '../shipstation';
+import { BaseResource } from './Base';
 
 export class Products extends BaseResource<IProduct> {
-  constructor(protected shipstation: Shipstation) {
-    super(shipstation, 'products')
+  constructor(protected override shipstation: Shipstation) {
+    super(shipstation, 'products');
   }
 
   /**
@@ -14,34 +15,34 @@ export class Products extends BaseResource<IProduct> {
    * @see https://www.shipstation.com/docs/api/products/list/
    */
   public async getAll(opts?: object): Promise<IProductPaginationResult> {
-    const query = this.buildQueryStringFromParams(opts)
-    const url = this.baseUrl + query
+    const query = this.buildQueryStringFromParams(opts);
+    const url = this.baseUrl + query;
 
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET,
-    })
-    return response.data as IProductPaginationResult
+      method: RequestMethod.GET
+    });
+    return response.data as IProductPaginationResult;
   }
 
   /**
    * Create or update a product
    * @param {IProduct} data - Product data
-   * @returns {Promise<IProductUpdateResponse>} 
+   * @returns {Promise<IProductUpdateResponse>}
    * @see https://www.shipstation.com/docs/api/products/update/
    */
   public async update(data: IProduct): Promise<IProductUpdateResponse> {
     if (!data.productId) {
-      throw new Error('Product ID is required')
+      throw new Error('Product ID is required');
     }
 
-    const url = `${this.baseUrl}/${data.productId}`
+    const url = `${this.baseUrl}/${data.productId}`;
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.PUT,
-      data,
-    })
+      data
+    });
 
-    return response.data as IProductUpdateResponse
+    return response.data as IProductUpdateResponse;
   }
 }

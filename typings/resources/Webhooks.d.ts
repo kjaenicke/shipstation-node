@@ -1,5 +1,5 @@
-import { ISubscribeToWebhookOpts, ISubscriptionResponse, IWebhook, IWebhookResult } from '../models';
-import Shipstation from '../shipstation';
+import type { ISubscribeToWebhookOpts, ISubscriptionResponse, IWebhook, IWebhookResult } from '../models';
+import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 export declare class Webhooks extends BaseResource<IWebhook> {
     protected shipstation: Shipstation;

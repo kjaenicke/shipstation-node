@@ -1,5 +1,5 @@
-import { IDimensions } from "./Dimensions";
-import { IWeight } from "./Weight";
+import type { IDimensions } from './Dimensions';
+import type { IWeight } from './Weight';
 export type DeliveryConfirmation = 'none' | 'delivery' | 'signature' | 'adult_signature' | 'direct_signature';
 export interface IShippingRateOptions {
     carrierCode: string;

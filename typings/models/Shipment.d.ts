@@ -1,8 +1,8 @@
-import { IAddress } from './Address';
-import { IAdvancedOptions } from './AdvancedOptions';
-import { IDimensions } from './Dimensions';
-import { IInsuranceOptions } from './InsuranceOptions';
-import { IWeight } from './Weight';
+import type { IAddress } from './Address';
+import type { IAdvancedOptions } from './AdvancedOptions';
+import type { IDimensions } from './Dimensions';
+import type { IInsuranceOptions } from './InsuranceOptions';
+import type { IWeight } from './Weight';
 export interface IShipment {
     shipmentId: number;
     orderId: number;
@@ -26,12 +26,12 @@ export interface IShipment {
     voidDate: string | null;
     marketplaceNotified: boolean;
     notifyErrorMessage: string | null;
-    shipTo: IAddress[];
-    weight: IWeight[];
+    shipTo: Array<IAddress>;
+    weight: Array<IWeight>;
     dimensions: IDimensions | null;
-    insuranceOptions: IInsuranceOptions[];
-    advancedOptions: IAdvancedOptions[];
-    shipmentItems: any[] | null;
-    labelData: any | null;
-    formData: any | null;
+    insuranceOptions: Array<IInsuranceOptions>;
+    advancedOptions: Array<IAdvancedOptions>;
+    shipmentItems: Array<any> | null;
+    labelData: any;
+    formData: any;
 }

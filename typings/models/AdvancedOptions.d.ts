@@ -9,7 +9,7 @@ export interface IAdvancedOptions {
     customField3?: string;
     source?: string;
     mergedOrSplit?: boolean;
-    mergedIds?: number[];
+    mergedIds?: Array<number>;
     parentId?: number;
     billToParty?: string;
     billToAccount?: string;

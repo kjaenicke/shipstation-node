@@ -1,8 +1,9 @@
 {
-  "semi": false,
-  "arrowParens": "avoid",
-  "bracketSpacing": true,
-  "endOfLine": "auto",
-  "parser": "typescript",
-  "singleQuote": true
+  "arrowParens": "always",
+  "printWidth": 120,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "useTabs": false
 }

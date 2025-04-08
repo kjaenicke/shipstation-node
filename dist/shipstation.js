@@ -1,70 +1,54 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RequestMethod = void 0;
-var axios_1 = __importDefault(require("axios"));
-var axios_retry_1 = __importDefault(require("axios-retry"));
-var stopcock = require('stopcock');
-var rateLimitOpts = {
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
+const stopcock = require('stopcock');
+const RATE_LIMIT_OPTS = {
     limit: 40,
-    interval: 1000 * 40,
+    interval: 1000 * 40
 };
-var RequestMethod;
-(function (RequestMethod) {
-    RequestMethod["GET"] = "GET";
-    RequestMethod["POST"] = "POST";
-    RequestMethod["PUT"] = "PUT";
-    RequestMethod["DELETE"] = "DELETE";
-})(RequestMethod || (exports.RequestMethod = RequestMethod = {}));
-var Shipstation = (function () {
-    function Shipstation(options) {
-        var _this = this;
+export const RequestMethod = {
+    GET: 'GET',
+    POST: 'POST',
+    PUT: 'PUT',
+    DELETE: 'DELETE'
+};
+export default class Shipstation {
+    constructor(options) {
         this.baseUrl = 'https://ssapi.shipstation.com/';
-        this.request = function (_a) {
-            var url = _a.url, _b = _a.method, method = _b === void 0 ? RequestMethod.GET : _b, _c = _a.useBaseUrl, useBaseUrl = _c === void 0 ? true : _c, data = _a.data;
-            var opts = {
+        this.request = ({ url, method = RequestMethod.GET, useBaseUrl = true, data }) => {
+            const opts = {
                 headers: {
-                    Authorization: "Basic ".concat(_this.authorizationToken),
+                    Authorization: `Basic ${this.authorizationToken}`
                 },
-                method: method,
-                url: "".concat(useBaseUrl ? _this.baseUrl : '').concat(url),
+                method,
+                url: `${useBaseUrl ? this.baseUrl : ''}${url}`
             };
             if (!opts.headers) {
                 opts.headers = {};
             }
-            if (_this.partnerKey) {
-                opts.headers['x-partner'] = _this.partnerKey;
+            if (this.partnerKey) {
+                opts.headers['x-partner'] = this.partnerKey;
             }
             if (data) {
                 opts.data = data;
             }
-            if (_this.timeout) {
-                opts.timeout = _this.timeout;
+            if (this.timeout) {
+                opts.timeout = this.timeout;
             }
-            return axios_1.default.request(opts);
+            return axios.request(opts);
         };
-        var key = options && options.apiKey ? options.apiKey : process.env.SS_API_KEY;
-        var secret = options && options.apiSecret
-            ? options.apiSecret
-            : process.env.SS_API_SECRET;
-        this.partnerKey =
-            options && options.partnerKey
-                ? options.partnerKey
-                : process.env.SS_PARTNER_KEY;
+        const key = (options === null || options === void 0 ? void 0 : options.apiKey) ? options.apiKey : process.env.SS_API_KEY;
+        const secret = (options === null || options === void 0 ? void 0 : options.apiSecret) ? options.apiSecret : process.env.SS_API_SECRET;
+        this.partnerKey = (options === null || options === void 0 ? void 0 : options.partnerKey) ? options.partnerKey : process.env.SS_PARTNER_KEY;
         if (!key || !secret) {
-            throw new Error("APIKey and API Secret are required! Provided API Key: ".concat(key, " API Secret: ").concat(secret));
+            throw new Error(`APIKey and API Secret are required! Provided API Key: ${key} API Secret: ${secret}`);
         }
-        this.authorizationToken = Buffer.from("".concat(key, ":").concat(secret)).toString('base64');
-        this.request = stopcock(this.request, rateLimitOpts);
-        if (options && options.retry) {
-            (0, axios_retry_1.default)(axios_1.default, typeof options.retry === 'boolean' ? undefined : options.retry);
+        this.authorizationToken = Buffer.from(`${key}:${secret}`).toString('base64');
+        this.request = stopcock(this.request, RATE_LIMIT_OPTS);
+        if (options === null || options === void 0 ? void 0 : options.retry) {
+            axiosRetry(axios, typeof options.retry === 'boolean' ? undefined : options.retry);
         }
-        if (options && options.timeout) {
+        if (options === null || options === void 0 ? void 0 : options.timeout) {
             this.timeout = options.timeout;
         }
     }
-    return Shipstation;
-}());
-exports.default = Shipstation;
+}

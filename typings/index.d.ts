@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import type { AxiosResponse } from 'axios';
 import * as Models from './models';
 import { Carriers } from './resources/Carriers';
 import { Fulfillments } from './resources/Fulfillments';
@@ -7,10 +7,11 @@ import { Shipments } from './resources/Shipments';
 import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
-import { IShipstationRequestOptions, IShipstationOptions, RequestMethod } from './shipstation';
+import type { IShipstationRequestOptions, IShipstationOptions } from './shipstation';
+import { RequestMethod } from './shipstation';
 import { Products } from './resources/Products';
 export default class ShipStationAPI {
-    private ss;
+    private readonly ss;
     orders: Orders;
     carriers: Carriers;
     fulfillments: Fulfillments;
@@ -19,7 +20,8 @@ export default class ShipStationAPI {
     shipments: Shipments;
     warehouses: Warehouses;
     webhooks: Webhooks;
-    request: (args: IShipstationRequestOptions) => Promise<AxiosResponse<any>>;
+    request: (args: IShipstationRequestOptions) => Promise<AxiosResponse>;
     constructor(options?: IShipstationOptions);
 }
-export { Models, IShipstationRequestOptions, RequestMethod };
+export type { IShipstationRequestOptions };
+export { Models, RequestMethod };

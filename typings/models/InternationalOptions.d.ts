@@ -9,6 +9,6 @@ export interface ICustomsItem {
 }
 export interface IInternationalOptions {
     contents: InternationalOptionsContentType;
-    customsItems: ICustomsItem[];
+    customsItems: Array<ICustomsItem>;
     nonDelivery: string;
 }
