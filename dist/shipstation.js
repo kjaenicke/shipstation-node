@@ -16,9 +16,9 @@ const RATE_LIMIT_OPTS = {
 };
 export default class Shipstation {
     constructor(options) {
-        this.baseUrl = 'https://ssapi.shipstation.com/';
         this.request = (_a) => __awaiter(this, [_a], void 0, function* ({ data, method = 'GET', params, url }) {
             const response = yield axios.request({
+                baseURL: 'https://ssapi.shipstation.com/',
                 headers: Object.assign({ Authorization: `Basic ${this.authorizationToken}` }, (this.partnerKey ? { 'x-partner': this.partnerKey } : {})),
                 data,
                 method,

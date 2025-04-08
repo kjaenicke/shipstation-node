@@ -14,7 +14,6 @@ export default class Shipstation {
     authorizationToken: string;
     partnerKey?: string;
     private readonly timeout?;
-    protected readonly baseUrl: string;
     constructor(options?: IShipstationOptions);
     request: <T>({ data, method, params, url }: IShipstationRequestOptions) => Promise<T>;
 }

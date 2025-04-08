@@ -27,7 +27,6 @@ export default class Shipstation {
   public authorizationToken: string;
   public partnerKey?: string;
   private readonly timeout?: number;
-  protected readonly baseUrl: string = 'https://ssapi.shipstation.com/';
 
   constructor(options?: IShipstationOptions) {
     const key = options?.apiKey ? options.apiKey : process.env.SS_API_KEY;
@@ -56,6 +55,7 @@ export default class Shipstation {
 
   public request = async <T>({ data, method = 'GET', params, url }: IShipstationRequestOptions) => {
     const response = await axios.request<T>({
+      baseURL: 'https://ssapi.shipstation.com/',
       headers: {
         Authorization: `Basic ${this.authorizationToken}`,
         ...(this.partnerKey ? { 'x-partner': this.partnerKey } : {})

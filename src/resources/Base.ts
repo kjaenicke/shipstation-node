@@ -1,6 +1,6 @@
 import type Shipstation from '../shipstation';
 
-export class BaseResource<T> {
+export abstract class BaseResource<T> {
   constructor(
     protected shipstation: Shipstation,
     protected baseUrl: string
