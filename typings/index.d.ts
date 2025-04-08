@@ -8,7 +8,6 @@ import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
 import type { IShipstationRequestOptions, IShipstationOptions } from './shipstation';
-import { RequestMethod } from './shipstation';
 import { Products } from './resources/Products';
 export default class ShipStationAPI {
     private readonly ss;
@@ -24,4 +23,4 @@ export default class ShipStationAPI {
     constructor(options?: IShipstationOptions);
 }
 export type { IShipstationRequestOptions };
-export { Models, RequestMethod };
+export { Models };

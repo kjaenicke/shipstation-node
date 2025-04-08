@@ -1,3 +1,12 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
 const stopcock = require('stopcock');
@@ -5,37 +14,20 @@ const RATE_LIMIT_OPTS = {
     limit: 40,
     interval: 1000 * 40
 };
-export const RequestMethod = {
-    GET: 'GET',
-    POST: 'POST',
-    PUT: 'PUT',
-    DELETE: 'DELETE'
-};
 export default class Shipstation {
     constructor(options) {
         this.baseUrl = 'https://ssapi.shipstation.com/';
-        this.request = ({ url, method = RequestMethod.GET, useBaseUrl = true, data }) => {
-            const opts = {
-                headers: {
-                    Authorization: `Basic ${this.authorizationToken}`
-                },
+        this.request = (_a) => __awaiter(this, [_a], void 0, function* ({ data, method = 'GET', params, url }) {
+            const response = yield axios.request({
+                headers: Object.assign({ Authorization: `Basic ${this.authorizationToken}` }, (this.partnerKey ? { 'x-partner': this.partnerKey } : {})),
+                data,
                 method,
-                url: `${useBaseUrl ? this.baseUrl : ''}${url}`
-            };
-            if (!opts.headers) {
-                opts.headers = {};
-            }
-            if (this.partnerKey) {
-                opts.headers['x-partner'] = this.partnerKey;
-            }
-            if (data) {
-                opts.data = data;
-            }
-            if (this.timeout) {
-                opts.timeout = this.timeout;
-            }
-            return axios.request(opts);
-        };
+                params,
+                timeout: this.timeout,
+                url
+            });
+            return response.data;
+        });
         const key = (options === null || options === void 0 ? void 0 : options.apiKey) ? options.apiKey : process.env.SS_API_KEY;
         const secret = (options === null || options === void 0 ? void 0 : options.apiSecret) ? options.apiSecret : process.env.SS_API_SECRET;
         this.partnerKey = (options === null || options === void 0 ? void 0 : options.partnerKey) ? options.partnerKey : process.env.SS_PARTNER_KEY;

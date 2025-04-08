@@ -1,15 +1,7 @@
+import type { AxiosRequestConfig } from 'axios';
 import type { IAxiosRetryConfig } from 'axios-retry';
-export declare const RequestMethod: {
-    readonly GET: "GET";
-    readonly POST: "POST";
-    readonly PUT: "PUT";
-    readonly DELETE: "DELETE";
-};
-export interface IShipstationRequestOptions {
-    url: string;
-    method?: keyof typeof RequestMethod;
-    useBaseUrl?: boolean;
-    data?: any;
+export interface IShipstationRequestOptions extends Pick<AxiosRequestConfig, 'data' | 'params' | 'url'> {
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
 }
 export interface IShipstationOptions {
     apiKey?: string;
@@ -21,8 +13,8 @@ export interface IShipstationOptions {
 export default class Shipstation {
     authorizationToken: string;
     partnerKey?: string;
-    private readonly baseUrl;
     private readonly timeout?;
+    protected readonly baseUrl: string;
     constructor(options?: IShipstationOptions);
-    request: ({ url, method, useBaseUrl, data }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any, any>>;
+    request: <T>({ data, method, params, url }: IShipstationRequestOptions) => Promise<T>;
 }

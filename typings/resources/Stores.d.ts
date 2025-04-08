@@ -8,5 +8,5 @@ export interface IGetAllStoresOptions {
 export declare class Stores extends BaseResource<IStore> {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(opts?: IGetAllStoresOptions): Promise<Array<IStore>>;
+    getAll(params?: IGetAllStoresOptions): Promise<Array<IStore>>;
 }

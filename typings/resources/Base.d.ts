@@ -4,5 +4,4 @@ export declare class BaseResource<T> {
     protected baseUrl: string;
     constructor(shipstation: Shipstation, baseUrl: string);
     get(id: number): Promise<T>;
-    protected buildQueryStringFromParams(params?: object): string;
 }
