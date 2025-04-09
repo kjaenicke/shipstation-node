@@ -24,7 +24,7 @@ export interface CreateWarehouseOptions {
     isDefault?: boolean;
 }
 export interface UpdateWarehouseOptions extends CreateWarehouseOptions {
-    warehouseId: number;
+    warehouseId?: number;
 }
 export type WarehouseResponseItem = Required<UpdateWarehouseOptions>;
 export interface DeleteWarehouseResponse {

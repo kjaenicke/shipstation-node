@@ -63,6 +63,7 @@ export interface CreateShipmentLabelOptions {
 export interface ShipmentResponseItem {
   shipmentId: number;
   orderId: number | null;
+  orderKey: string;
   userId: string | null;
   customerEmail: string | null;
   orderNumber: string | null;

@@ -1,6 +1,5 @@
 import type { AxiosResponse } from 'axios';
 
-import * as Models from './types';
 import { Carriers } from './resources/Carriers';
 import { Fulfillments } from './resources/Fulfillments';
 import { Orders } from './resources/Orders';
@@ -41,4 +40,5 @@ export default class ShipStationAPI {
 }
 
 export type { ShipstationRequestOptions };
-export { Models };
+
+export * from './types';

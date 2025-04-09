@@ -26,7 +26,7 @@ export interface CreateWarehouseOptions {
 }
 
 export interface UpdateWarehouseOptions extends CreateWarehouseOptions {
-  warehouseId: number;
+  warehouseId?: number;
 }
 
 export type WarehouseResponseItem = Required<UpdateWarehouseOptions>;

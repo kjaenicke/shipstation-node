@@ -37,6 +37,6 @@
     "format": "npm run lint -- --fix",
     "lint": "eslint --max-warnings 0 --config=eslint.config.js"
   },
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "version": "0.28.0"
 }

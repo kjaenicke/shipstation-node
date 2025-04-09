@@ -130,7 +130,7 @@ export interface CreateOrUpdateOrderOptions {
      */
     shipTo: Address;
     /** Use an array of [OrderItem](https://www.shipstation.com/docs/api/models/order-item/) models. */
-    items?: Array<OrderItem>;
+    items?: Array<Omit<OrderItem, 'orderItemId' | 'createDate' | 'modifyDate'>>;
     /** The total amount paid for the Order. */
     amountPaid?: number;
     /** The total tax amount for the Order. */
@@ -194,7 +194,7 @@ export interface CreateOrUpdateOrderOptions {
     internationalOptions?: InternationalOptions;
     /** The default [two-letter ISO Origin Country code](https://www.nationsonline.org/oneworld/country_code_list.htm) for
      * the Product. */
-    customsCountryCode: string;
+    customsCountryCode?: string;
     /**
      * Various advanced options may be available depending on the shipping carrier that is used to ship the order.
      *
