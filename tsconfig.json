@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowJs": false,
     "declaration": true,
-    "declarationDir": "./typings",
     "esModuleInterop": true,
     "isolatedModules": true,
     "lib": ["ESNext"],
