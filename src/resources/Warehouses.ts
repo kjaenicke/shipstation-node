@@ -1,6 +1,5 @@
 import type { ICreateOrUpdateWarehouse, IUpdateOrDeleteWarehouseResponse, IWarehouse } from '../models';
 import type Shipstation from '../shipstation';
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 
 export class Warehouses extends BaseResource<IWarehouse> {
@@ -8,44 +7,33 @@ export class Warehouses extends BaseResource<IWarehouse> {
     super(shipstation, 'warehouses');
   }
 
-  public async getAll(opts?: object): Promise<Array<IWarehouse>> {
-    const query = this.buildQueryStringFromParams(opts);
-    const url = this.baseUrl + query;
-
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.GET
+  public async getAll(): Promise<Array<IWarehouse>> {
+    return this.shipstation.request<Array<IWarehouse>>({
+      url: this.baseUrl,
+      method: 'GET'
     });
-    return response.data as Array<IWarehouse>;
   }
 
   public async create(data: ICreateOrUpdateWarehouse): Promise<IWarehouse> {
-    const url = `${this.baseUrl}/createwarehouse`;
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.POST,
+    return this.shipstation.request<IWarehouse>({
+      url: `${this.baseUrl}/createwarehouse`,
+      method: 'POST',
       data
     });
-    return response.data as IWarehouse;
   }
 
   public async update(id: number, data: ICreateOrUpdateWarehouse): Promise<IUpdateOrDeleteWarehouseResponse> {
-    const url = `${this.baseUrl}/${id}`;
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.PUT,
+    return this.shipstation.request<IUpdateOrDeleteWarehouseResponse>({
+      url: `${this.baseUrl}/${id}`,
+      method: 'PUT',
       data
     });
-    return response.data as IUpdateOrDeleteWarehouseResponse;
   }
 
   public async delete(id: number): Promise<IUpdateOrDeleteWarehouseResponse> {
-    const url = `${this.baseUrl}/${id}`;
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.DELETE
+    return this.shipstation.request<IUpdateOrDeleteWarehouseResponse>({
+      url: `${this.baseUrl}/${id}`,
+      method: 'DELETE'
     });
-
-    return response.data as IUpdateOrDeleteWarehouseResponse;
   }
 }

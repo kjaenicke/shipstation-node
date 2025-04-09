@@ -7,7 +7,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 export class Webhooks extends BaseResource {
     constructor(shipstation) {
@@ -16,31 +15,26 @@ export class Webhooks extends BaseResource {
     }
     getAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = this.baseUrl;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.GET
+            return this.shipstation.request({
+                url: this.baseUrl,
+                method: 'GET'
             });
-            return response.data;
         });
     }
     subscribe(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = `${this.baseUrl}/subscribe`;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.POST,
+            return this.shipstation.request({
+                url: `${this.baseUrl}/subscribe`,
+                method: 'POST',
                 data
             });
-            return response.data;
         });
     }
     unsubscribe(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = `${this.baseUrl}/${id}`;
             yield this.shipstation.request({
-                url,
-                method: RequestMethod.DELETE
+                url: `${this.baseUrl}/${id}`,
+                method: 'DELETE'
             });
             return null;
         });

@@ -6,7 +6,7 @@ import { BaseResource } from './Base';
 export declare class Shipments extends BaseResource<IShipment> {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(opts?: object): Promise<Array<IShipment>>;
+    getAll(params?: object): Promise<Array<IShipment>>;
     getRates(data?: IShippingRateOptions): Promise<Array<IShippingRate>>;
     createLabel(data: ICreateLabelOptions): Promise<IShipment>;
     voidLabel(data: IVoidLabelOptions): Promise<IVoidLabel>;

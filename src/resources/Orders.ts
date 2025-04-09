@@ -7,7 +7,6 @@ import type {
   ICreateLabelResponse
 } from '../models';
 import type Shipstation from '../shipstation';
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 
 export class Orders extends BaseResource<IOrder> {
@@ -15,46 +14,35 @@ export class Orders extends BaseResource<IOrder> {
     super(shipstation, 'orders');
   }
 
-  public async getAll(opts?: object): Promise<IOrderPaginationResult> {
-    const query = this.buildQueryStringFromParams(opts);
-    const url = this.baseUrl + query;
-
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.GET
+  public async getAll(params?: object): Promise<IOrderPaginationResult> {
+    return this.shipstation.request<IOrderPaginationResult>({
+      url: this.baseUrl,
+      method: 'GET',
+      params
     });
-    return response.data as IOrderPaginationResult;
   }
 
   public async createOrUpdate(data: ICreateOrUpdateOrder): Promise<IOrder> {
-    const url = `${this.baseUrl}/createorder`;
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.POST,
+    return this.shipstation.request<IOrder>({
+      url: `${this.baseUrl}/createorder`,
+      method: 'POST',
       data
     });
-    return response.data as IOrder;
   }
 
   public async createOrUpdateBulk(data: Array<ICreateOrUpdateOrder>): Promise<ICreateOrUpdateOrderBulkResponse> {
-    const url = `${this.baseUrl}/createorders`;
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.POST,
+    return this.shipstation.request<ICreateOrUpdateOrderBulkResponse>({
+      url: `${this.baseUrl}/createorders`,
+      method: 'POST',
       data
     });
-
-    return response.data as ICreateOrUpdateOrderBulkResponse;
   }
 
   public async createLabel(data: ICreateLabel): Promise<ICreateLabelResponse> {
-    const url = `${this.baseUrl}/createlabelfororder`;
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.POST,
+    return this.shipstation.request<ICreateLabelResponse>({
+      url: `${this.baseUrl}/createlabelfororder`,
+      method: 'POST',
       data
     });
-
-    return response.data as ICreateLabelResponse;
   }
 }

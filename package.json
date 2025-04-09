@@ -38,5 +38,5 @@
     "lint": "eslint --max-warnings 0 --config=eslint.config.js"
   },
   "types": "typings/index.d.ts",
-  "version": "0.25.1"
+  "version": "0.26.0"
 }

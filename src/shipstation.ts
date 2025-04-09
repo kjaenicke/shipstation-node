@@ -11,18 +11,8 @@ const RATE_LIMIT_OPTS = {
   interval: 1000 * 40
 };
 
-export const RequestMethod = {
-  GET: 'GET',
-  POST: 'POST',
-  PUT: 'PUT',
-  DELETE: 'DELETE'
-} as const;
-
-export interface IShipstationRequestOptions {
-  url: string;
-  method?: keyof typeof RequestMethod;
-  useBaseUrl?: boolean;
-  data?: any;
+export interface IShipstationRequestOptions extends Pick<AxiosRequestConfig, 'data' | 'params' | 'url'> {
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
 }
 
 export interface IShipstationOptions {
@@ -36,7 +26,6 @@ export interface IShipstationOptions {
 export default class Shipstation {
   public authorizationToken: string;
   public partnerKey?: string;
-  private readonly baseUrl: string = 'https://ssapi.shipstation.com/';
   private readonly timeout?: number;
 
   constructor(options?: IShipstationOptions) {
@@ -64,29 +53,20 @@ export default class Shipstation {
     }
   }
 
-  public request = ({ url, method = RequestMethod.GET, useBaseUrl = true, data }: IShipstationRequestOptions) => {
-    const opts: AxiosRequestConfig = {
+  public request = async <T>({ data, method = 'GET', params, url }: IShipstationRequestOptions) => {
+    const response = await axios.request<T>({
+      baseURL: 'https://ssapi.shipstation.com/',
       headers: {
-        Authorization: `Basic ${this.authorizationToken}`
+        Authorization: `Basic ${this.authorizationToken}`,
+        ...(this.partnerKey ? { 'x-partner': this.partnerKey } : {})
       },
+      data,
       method,
-      url: `${useBaseUrl ? this.baseUrl : ''}${url}`
-    };
+      params,
+      timeout: this.timeout,
+      url
+    });
 
-    // Ensure opts.headers exists before setting a property on it
-    if (!opts.headers) {
-      opts.headers = {};
-    }
-    if (this.partnerKey) {
-      opts.headers['x-partner'] = this.partnerKey;
-    }
-
-    if (data) {
-      opts.data = data;
-    }
-    if (this.timeout) {
-      opts.timeout = this.timeout;
-    }
-    return axios.request(opts);
+    return response.data;
   };
 }

@@ -1,6 +1,5 @@
 import type { IProduct, IProductPaginationResult, IProductUpdateResponse } from '../models';
 import type Shipstation from '../shipstation';
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 
 export class Products extends BaseResource<IProduct> {
@@ -10,19 +9,16 @@ export class Products extends BaseResource<IProduct> {
 
   /**
    * Get all products currently available in ShipStation
-   * @param {object} opts - Query parameters
+   * @param {object} params - Query parameters
    * @returns {Promise<IProductPaginationResult>}
    * @see https://www.shipstation.com/docs/api/products/list/
    */
-  public async getAll(opts?: object): Promise<IProductPaginationResult> {
-    const query = this.buildQueryStringFromParams(opts);
-    const url = this.baseUrl + query;
-
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.GET
+  public async getAll(params?: object): Promise<IProductPaginationResult> {
+    return this.shipstation.request<IProductPaginationResult>({
+      url: this.baseUrl,
+      method: 'GET',
+      params
     });
-    return response.data as IProductPaginationResult;
   }
 
   /**
@@ -36,13 +32,10 @@ export class Products extends BaseResource<IProduct> {
       throw new Error('Product ID is required');
     }
 
-    const url = `${this.baseUrl}/${data.productId}`;
-    const response = await this.shipstation.request({
-      url,
-      method: RequestMethod.PUT,
+    return this.shipstation.request<IProductUpdateResponse>({
+      url: `${this.baseUrl}/${data.productId}`,
+      method: 'PUT',
       data
     });
-
-    return response.data as IProductUpdateResponse;
   }
 }

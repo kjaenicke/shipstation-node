@@ -7,30 +7,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 export class Stores extends BaseResource {
     constructor(shipstation) {
         super(shipstation, 'stores');
         this.shipstation = shipstation;
     }
-    getAll(opts) {
+    getAll(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = this.baseUrl;
-            if (typeof opts !== 'undefined') {
-                if (typeof opts.showInactive !== 'undefined') {
-                    url += `?showInactive=${opts.showInactive}`;
-                }
-                if (typeof opts.marketplaceId !== 'undefined') {
-                    const marketplaceQuery = `marketplaceId=${opts.marketplaceId}`;
-                    url += url.includes('?') ? `&${marketplaceQuery}` : `?${marketplaceQuery}`;
-                }
-            }
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.GET
+            return this.shipstation.request({
+                params,
+                url: this.baseUrl,
+                method: 'GET'
             });
-            return response.data;
         });
     }
 }

@@ -7,55 +7,46 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 export class Orders extends BaseResource {
     constructor(shipstation) {
         super(shipstation, 'orders');
         this.shipstation = shipstation;
     }
-    getAll(opts) {
+    getAll(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = this.buildQueryStringFromParams(opts);
-            const url = this.baseUrl + query;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.GET
+            return this.shipstation.request({
+                url: this.baseUrl,
+                method: 'GET',
+                params
             });
-            return response.data;
         });
     }
     createOrUpdate(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = `${this.baseUrl}/createorder`;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.POST,
+            return this.shipstation.request({
+                url: `${this.baseUrl}/createorder`,
+                method: 'POST',
                 data
             });
-            return response.data;
         });
     }
     createOrUpdateBulk(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = `${this.baseUrl}/createorders`;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.POST,
+            return this.shipstation.request({
+                url: `${this.baseUrl}/createorders`,
+                method: 'POST',
                 data
             });
-            return response.data;
         });
     }
     createLabel(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = `${this.baseUrl}/createlabelfororder`;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.POST,
+            return this.shipstation.request({
+                url: `${this.baseUrl}/createlabelfororder`,
+                method: 'POST',
                 data
             });
-            return response.data;
         });
     }
 }

@@ -7,55 +7,46 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 export class Shipments extends BaseResource {
     constructor(shipstation) {
         super(shipstation, 'shipments');
         this.shipstation = shipstation;
     }
-    getAll(opts) {
+    getAll(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = this.buildQueryStringFromParams(opts);
-            const url = this.baseUrl + query;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.GET
+            return this.shipstation.request({
+                url: this.baseUrl,
+                method: 'GET',
+                params
             });
-            return response.data;
         });
     }
     getRates(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = this.baseUrl + '/getrates';
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.POST,
+            return this.shipstation.request({
+                url: `${this.baseUrl}/getrates`,
+                method: 'POST',
                 data
             });
-            return response.data;
         });
     }
     createLabel(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = this.baseUrl + '/createlabel';
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.POST,
+            return this.shipstation.request({
+                url: `${this.baseUrl}/createlabel`,
+                method: 'POST',
                 data
             });
-            return response.data;
         });
     }
     voidLabel(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = this.baseUrl + '/voidlabel';
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.POST,
+            return this.shipstation.request({
+                url: `${this.baseUrl}/voidlabel`,
+                method: 'POST',
                 data
             });
-            return response.data;
         });
     }
 }

@@ -7,22 +7,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { RequestMethod } from '../shipstation';
 import { BaseResource } from './Base';
 export class Products extends BaseResource {
     constructor(shipstation) {
         super(shipstation, 'products');
         this.shipstation = shipstation;
     }
-    getAll(opts) {
+    getAll(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = this.buildQueryStringFromParams(opts);
-            const url = this.baseUrl + query;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.GET
+            return this.shipstation.request({
+                url: this.baseUrl,
+                method: 'GET',
+                params
             });
-            return response.data;
         });
     }
     update(data) {
@@ -30,13 +27,11 @@ export class Products extends BaseResource {
             if (!data.productId) {
                 throw new Error('Product ID is required');
             }
-            const url = `${this.baseUrl}/${data.productId}`;
-            const response = yield this.shipstation.request({
-                url,
-                method: RequestMethod.PUT,
+            return this.shipstation.request({
+                url: `${this.baseUrl}/${data.productId}`,
+                method: 'PUT',
                 data
             });
-            return response.data;
         });
     }
 }
