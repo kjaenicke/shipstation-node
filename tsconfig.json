@@ -18,7 +18,6 @@
     "noUnusedParameters": true,
     "outDir": "./dist",
     "pretty": true,
-    "removeComments": true,
     "rootDir": "./src",
     "strict": true,
     "strictFunctionTypes": true,
