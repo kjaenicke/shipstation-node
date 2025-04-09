@@ -30,7 +30,7 @@ export default class ShipStation {
             return response.data;
         });
         const key = (options === null || options === void 0 ? void 0 : options.apiKey) ? options.apiKey : process.env.SHIPSTATION_API_KEY;
-        const secret = (options === null || options === void 0 ? void 0 : options.apiSecret) ? options.apiSecret : process.env.SHIPSTATION_API_SECRET_KEY;
+        const secret = (options === null || options === void 0 ? void 0 : options.apiSecret) ? options.apiSecret : process.env.SHIPSTATION_API_SECRET;
         this.partnerKey = (options === null || options === void 0 ? void 0 : options.partnerKey) ? options.partnerKey : process.env.SHIPSTATION_PARTNER_KEY;
         if (!key || !secret) {
             throw new Error(`APIKey and API Secret are required! Provided API Key: ${key} API Secret: ${secret}`);

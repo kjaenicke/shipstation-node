@@ -30,7 +30,7 @@ export default class ShipStation {
 
   constructor(options?: ShipStationOptions) {
     const key = options?.apiKey ? options.apiKey : process.env.SHIPSTATION_API_KEY;
-    const secret = options?.apiSecret ? options.apiSecret : process.env.SHIPSTATION_API_SECRET_KEY;
+    const secret = options?.apiSecret ? options.apiSecret : process.env.SHIPSTATION_API_SECRET;
 
     this.partnerKey = options?.partnerKey ? options.partnerKey : process.env.SHIPSTATION_PARTNER_KEY;
 
