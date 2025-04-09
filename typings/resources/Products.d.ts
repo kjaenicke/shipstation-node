@@ -1,9 +1,10 @@
 import type { IProduct, IProductPaginationResult, IProductUpdateResponse } from '../models';
 import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
-export declare class Products extends BaseResource<IProduct> {
+export declare class Products extends BaseResource {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(params?: object): Promise<IProductPaginationResult>;
+    get(productId: number): Promise<IProduct>;
+    list(params?: object): Promise<IProductPaginationResult>;
     update(data: IProduct): Promise<IProductUpdateResponse>;
 }

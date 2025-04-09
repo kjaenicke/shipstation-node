@@ -13,7 +13,15 @@ export class Carriers extends BaseResource {
         super(shipstation, 'carriers');
         this.shipstation = shipstation;
     }
-    getAll() {
+    get(carrierCode) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.shipstation.request({
+                url: `${this.baseUrl}?carrierCode=${carrierCode}`,
+                method: 'GET'
+            });
+        });
+    }
+    list() {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
                 url: this.baseUrl,

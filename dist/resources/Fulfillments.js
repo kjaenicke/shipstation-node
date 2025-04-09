@@ -13,7 +13,7 @@ export class Fulfillments extends BaseResource {
         super(shipstation, 'fulfillments');
         this.shipstation = shipstation;
     }
-    getAll(params) {
+    list(params) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
                 url: this.baseUrl,

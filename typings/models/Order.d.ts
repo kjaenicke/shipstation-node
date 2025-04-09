@@ -129,7 +129,7 @@ interface IBulkCreateOrUpdateOrderResponse {
     success: boolean;
     errorMessage: string | null;
 }
-export interface ICreateOrUpdateOrderBulkResponse {
+export interface ICreateOrUpdateMultipleOrdersResponse {
     results: Array<IBulkCreateOrUpdateOrderResponse>;
     hasErrors: boolean;
 }

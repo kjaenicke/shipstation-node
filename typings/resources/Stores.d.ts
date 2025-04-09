@@ -5,8 +5,9 @@ export interface IGetAllStoresOptions {
     showInactive?: boolean;
     marketplaceId?: number;
 }
-export declare class Stores extends BaseResource<IStore> {
+export declare class Stores extends BaseResource {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(params?: IGetAllStoresOptions): Promise<Array<IStore>>;
+    get(storeId: number): Promise<IStore>;
+    list(params?: IGetAllStoresOptions): Promise<Array<IStore>>;
 }

@@ -13,7 +13,15 @@ export class Orders extends BaseResource {
         super(shipstation, 'orders');
         this.shipstation = shipstation;
     }
-    getAll(params) {
+    get(orderId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.shipstation.request({
+                url: `${this.baseUrl}/${orderId}`,
+                method: 'GET'
+            });
+        });
+    }
+    list(params) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
                 url: this.baseUrl,
@@ -31,7 +39,7 @@ export class Orders extends BaseResource {
             });
         });
     }
-    createOrUpdateBulk(data) {
+    createOrUpdateMultiple(data) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
                 url: `${this.baseUrl}/createorders`,
