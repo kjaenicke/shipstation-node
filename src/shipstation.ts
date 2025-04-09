@@ -11,11 +11,11 @@ const RATE_LIMIT_OPTS = {
   interval: 1000 * 40
 };
 
-export interface IShipstationRequestOptions extends Pick<AxiosRequestConfig, 'data' | 'params' | 'url'> {
+export interface ShipstationRequestOptions extends Pick<AxiosRequestConfig, 'data' | 'params' | 'url'> {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
 }
 
-export interface IShipstationOptions {
+export interface ShipstationOptions {
   apiKey?: string;
   apiSecret?: string;
   partnerKey?: string;
@@ -28,7 +28,7 @@ export default class Shipstation {
   public partnerKey?: string;
   private readonly timeout?: number;
 
-  constructor(options?: IShipstationOptions) {
+  constructor(options?: ShipstationOptions) {
     const key = options?.apiKey ? options.apiKey : process.env.SS_API_KEY;
     const secret = options?.apiSecret ? options.apiSecret : process.env.SS_API_SECRET;
 
@@ -53,7 +53,7 @@ export default class Shipstation {
     }
   }
 
-  public request = async <T>({ data, method = 'GET', params, url }: IShipstationRequestOptions) => {
+  public request = async <T>({ data, method = 'GET', params, url }: ShipstationRequestOptions) => {
     const response = await axios.request<T>({
       baseURL: 'https://ssapi.shipstation.com/',
       headers: {

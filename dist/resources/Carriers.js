@@ -13,6 +13,19 @@ export class Carriers extends BaseResource {
         super(shipstation, 'carriers');
         this.shipstation = shipstation;
     }
+    /**
+     * [Official Documentation](https://www.shipstation.com/docs/api/carriers/get/)
+     *
+     * Retrieves the shipping carrier account details for the specified `carrierCode`. Use this method to determine a
+     * carrier's account balance.
+     *
+     * To find a specific `carrierCode`, make an API Call to [list the carriers](https://www.shipstation.com/docs/api/carriers/list/)
+     * associated with your account.
+     *
+     * @param carrierCode The code of the carrier to retrieve.
+     *
+     * @returns The carrier details.
+     */
     get(carrierCode) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
@@ -21,6 +34,13 @@ export class Carriers extends BaseResource {
             });
         });
     }
+    /**
+     * [Official Documentation](https://www.shipstation.com/docs/api/carriers/list/)
+     *
+     * List all shipping providers connected to this account.
+     *
+     * @returns A list of carriers.
+     */
     list() {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({

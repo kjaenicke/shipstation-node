@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const stopcock = require('stopcock');
 const RATE_LIMIT_OPTS = {
     limit: 40,
@@ -35,7 +36,10 @@ export default class Shipstation {
             throw new Error(`APIKey and API Secret are required! Provided API Key: ${key} API Secret: ${secret}`);
         }
         this.authorizationToken = Buffer.from(`${key}:${secret}`).toString('base64');
+        // Globally define API ratelimiting
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         this.request = stopcock(this.request, RATE_LIMIT_OPTS);
+        // Retry failed requests
         if (options === null || options === void 0 ? void 0 : options.retry) {
             axiosRetry(axios, typeof options.retry === 'boolean' ? undefined : options.retry);
         }

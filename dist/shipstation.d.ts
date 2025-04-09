@@ -1,9 +1,9 @@
 import type { AxiosRequestConfig } from 'axios';
 import type { IAxiosRetryConfig } from 'axios-retry';
-export interface IShipstationRequestOptions extends Pick<AxiosRequestConfig, 'data' | 'params' | 'url'> {
+export interface ShipstationRequestOptions extends Pick<AxiosRequestConfig, 'data' | 'params' | 'url'> {
     method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
 }
-export interface IShipstationOptions {
+export interface ShipstationOptions {
     apiKey?: string;
     apiSecret?: string;
     partnerKey?: string;
@@ -14,6 +14,6 @@ export default class Shipstation {
     authorizationToken: string;
     partnerKey?: string;
     private readonly timeout?;
-    constructor(options?: IShipstationOptions);
-    request: <T>({ data, method, params, url }: IShipstationRequestOptions) => Promise<T>;
+    constructor(options?: ShipstationOptions);
+    request: <T>({ data, method, params, url }: ShipstationRequestOptions) => Promise<T>;
 }

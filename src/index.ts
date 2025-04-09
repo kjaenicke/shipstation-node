@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios';
 
-import * as Models from './models';
+import * as Models from './types';
 import { Carriers } from './resources/Carriers';
 import { Fulfillments } from './resources/Fulfillments';
 import { Orders } from './resources/Orders';
@@ -8,7 +8,7 @@ import { Shipments } from './resources/Shipments';
 import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
-import type { IShipstationRequestOptions, IShipstationOptions } from './shipstation';
+import type { ShipstationRequestOptions, ShipstationOptions } from './shipstation';
 import Shipstation from './shipstation';
 import { Products } from './resources/Products';
 
@@ -23,9 +23,9 @@ export default class ShipStationAPI {
   public shipments: Shipments;
   public warehouses: Warehouses;
   public webhooks: Webhooks;
-  public request: (args: IShipstationRequestOptions) => Promise<AxiosResponse>;
+  public request: (args: ShipstationRequestOptions) => Promise<AxiosResponse>;
 
-  constructor(options?: IShipstationOptions) {
+  constructor(options?: ShipstationOptions) {
     this.ss = new Shipstation(options);
 
     this.orders = new Orders(this.ss);
@@ -40,5 +40,5 @@ export default class ShipStationAPI {
   }
 }
 
-export type { IShipstationRequestOptions };
+export type { ShipstationRequestOptions };
 export { Models };

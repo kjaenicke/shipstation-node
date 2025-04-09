@@ -13,6 +13,18 @@ export class Stores extends BaseResource {
         super(shipstation, 'stores');
         this.shipstation = shipstation;
     }
+    /**
+     * [Official Documentation](https://www.shipstation.com/docs/api/stores/get-store/)
+     *
+     * This Get Store API call uses the `storeId` property to retrieve information related to a specific store.
+     *
+     * To find the `storeId` for a specific store and also to see the list of stores installed in your account, make a
+     * [List Stores call](https://www.shipstation.com/docs/api/stores/list/).
+     *
+     * @param storeId Unique identifier for the store.
+     *
+     * @returns The store details.
+     */
     get(storeId) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
@@ -21,6 +33,15 @@ export class Stores extends BaseResource {
             });
         });
     }
+    /**
+     * [Official Documentation](https://www.shipstation.com/docs/api/stores/list/)
+     *
+     * Retrieve the list of installed stores on the account with this API call.
+     *
+     * @param params The parameters for the request.
+     *
+     * @returns The list of stores.
+     */
     list(params) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
