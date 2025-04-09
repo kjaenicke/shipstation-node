@@ -1,10 +1,10 @@
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import type { StoreResponseItem } from '../types';
 import type { ListStoresOptions, ListStoresResponse } from '../types';
 import { BaseResource } from './Base';
 
 export class Stores extends BaseResource {
-  constructor(protected override shipstation: Shipstation) {
+  constructor(protected override shipstation: ShipStation) {
     super(shipstation, 'stores');
   }
 

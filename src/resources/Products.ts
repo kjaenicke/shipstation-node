@@ -1,4 +1,4 @@
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import type {
   GetProductResponse,
   ListProductsOptions,
@@ -9,7 +9,7 @@ import type {
 import { BaseResource } from './Base';
 
 export class Products extends BaseResource {
-  constructor(protected override shipstation: Shipstation) {
+  constructor(protected override shipstation: ShipStation) {
     super(shipstation, 'products');
   }
 

@@ -5,11 +5,11 @@ import { Shipments } from './resources/Shipments';
 import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
-import Shipstation from './shipstation';
+import ShipStation from './shipstation';
 import { Products } from './resources/Products';
 export default class ShipStationAPI {
     constructor(options) {
-        this.ss = new Shipstation(options);
+        this.ss = new ShipStation(options);
         this.orders = new Orders(this.ss);
         this.carriers = new Carriers(this.ss);
         this.fulfillments = new Fulfillments(this.ss);

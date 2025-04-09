@@ -1,4 +1,4 @@
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import { BaseResource } from './Base';
 import type {
   CreateWarehouseOptions,
@@ -9,7 +9,7 @@ import type {
 } from '../types';
 
 export class Warehouses extends BaseResource {
-  constructor(protected override shipstation: Shipstation) {
+  constructor(protected override shipstation: ShipStation) {
     super(shipstation, 'warehouses');
   }
 

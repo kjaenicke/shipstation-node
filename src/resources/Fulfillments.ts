@@ -1,9 +1,9 @@
 import type { ListFulfillmentsOptions, ListFulfillmentsResponse } from '../types';
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import { BaseResource } from './Base';
 
 export class Fulfillments extends BaseResource {
-  constructor(protected override shipstation: Shipstation) {
+  constructor(protected override shipstation: ShipStation) {
     super(shipstation, 'fulfillments');
   }
 

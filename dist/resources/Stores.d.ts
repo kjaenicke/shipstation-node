@@ -1,10 +1,10 @@
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import type { StoreResponseItem } from '../types';
 import type { ListStoresOptions, ListStoresResponse } from '../types';
 import { BaseResource } from './Base';
 export declare class Stores extends BaseResource {
-    protected shipstation: Shipstation;
-    constructor(shipstation: Shipstation);
+    protected shipstation: ShipStation;
+    constructor(shipstation: ShipStation);
     /**
      * [Official Documentation](https://www.shipstation.com/docs/api/stores/get-store/)
      *
