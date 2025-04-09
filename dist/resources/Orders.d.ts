@@ -1,10 +1,10 @@
 import type { Order, CreateOrderLabelOptions, ListOrdersByTagOptions } from '../types';
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import { BaseResource } from './Base';
 import type { CreateLabelResponse, CreateOrUpdateMultipleOrdersResponse, CreateOrUpdateOrderOptions, ListOrdersOptions, ListOrdersResponse, OrderResponseItem } from '../types';
 export declare class Orders extends BaseResource {
-    protected shipstation: Shipstation;
-    constructor(shipstation: Shipstation);
+    protected shipstation: ShipStation;
+    constructor(shipstation: ShipStation);
     /**
      * [Official Documentation](https://www.shipstation.com/docs/api/orders/get-order/)
      *

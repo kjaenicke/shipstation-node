@@ -1,6 +1,6 @@
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 export declare abstract class BaseResource {
-    protected shipstation: Shipstation;
+    protected shipstation: ShipStation;
     protected baseUrl: string;
-    constructor(shipstation: Shipstation, baseUrl: string);
+    constructor(shipstation: ShipStation, baseUrl: string);
 }

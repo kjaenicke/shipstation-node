@@ -1,9 +1,9 @@
 import type { CreateShipmentLabelOptions, GetRatesOptions, GetRatesResponse, ListShipmentsOptions, ListShipmentsResponse, ShipmentResponseItem, VoidShipmentLabelResponse } from '../types';
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import { BaseResource } from './Base';
 export declare class Shipments extends BaseResource {
-    protected shipstation: Shipstation;
-    constructor(shipstation: Shipstation);
+    protected shipstation: ShipStation;
+    constructor(shipstation: ShipStation);
     /**
      * [Official Documentation](https://www.shipstation.com/docs/api/shipments/list/)
      *

@@ -6,7 +6,7 @@ import { Shipments } from './resources/Shipments';
 import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
-import type { ShipstationRequestOptions, ShipstationOptions } from './shipstation';
+import type { ShipStationRequestOptions, ShipStationOptions } from './shipstation';
 import { Products } from './resources/Products';
 export default class ShipStationAPI {
     private readonly ss;
@@ -18,8 +18,8 @@ export default class ShipStationAPI {
     shipments: Shipments;
     warehouses: Warehouses;
     webhooks: Webhooks;
-    request: (args: ShipstationRequestOptions) => Promise<AxiosResponse>;
-    constructor(options?: ShipstationOptions);
+    request: (args: ShipStationRequestOptions) => Promise<AxiosResponse>;
+    constructor(options?: ShipStationOptions);
 }
-export type { ShipstationRequestOptions };
+export type { ShipStationRequestOptions };
 export * from './types';
