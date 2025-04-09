@@ -2,12 +2,19 @@ import type { ICreateOrUpdateWarehouse, IUpdateOrDeleteWarehouseResponse, IWareh
 import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 
-export class Warehouses extends BaseResource<IWarehouse> {
+export class Warehouses extends BaseResource {
   constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'warehouses');
   }
 
-  public async getAll(): Promise<Array<IWarehouse>> {
+  public async get(warehouseId: number): Promise<IWarehouse> {
+    return this.shipstation.request<IWarehouse>({
+      url: `${this.baseUrl}/${warehouseId}`,
+      method: 'GET'
+    });
+  }
+
+  public async listWarehouses(): Promise<Array<IWarehouse>> {
     return this.shipstation.request<Array<IWarehouse>>({
       url: this.baseUrl,
       method: 'GET'

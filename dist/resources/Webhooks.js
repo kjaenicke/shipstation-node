@@ -13,7 +13,7 @@ export class Webhooks extends BaseResource {
         super(shipstation, 'webhooks');
         this.shipstation = shipstation;
     }
-    getAll() {
+    list() {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
                 url: this.baseUrl,

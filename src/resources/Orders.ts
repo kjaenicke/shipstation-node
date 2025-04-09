@@ -1,6 +1,6 @@
 import type {
   ICreateOrUpdateOrder,
-  ICreateOrUpdateOrderBulkResponse,
+  ICreateOrUpdateMultipleOrdersResponse,
   IOrder,
   IOrderPaginationResult,
   ICreateLabel,
@@ -9,12 +9,19 @@ import type {
 import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 
-export class Orders extends BaseResource<IOrder> {
+export class Orders extends BaseResource {
   constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'orders');
   }
 
-  public async getAll(params?: object): Promise<IOrderPaginationResult> {
+  public async get(orderId: number): Promise<IOrder> {
+    return this.shipstation.request<IOrder>({
+      url: `${this.baseUrl}/${orderId}`,
+      method: 'GET'
+    });
+  }
+
+  public async list(params?: object): Promise<IOrderPaginationResult> {
     return this.shipstation.request<IOrderPaginationResult>({
       url: this.baseUrl,
       method: 'GET',
@@ -30,8 +37,10 @@ export class Orders extends BaseResource<IOrder> {
     });
   }
 
-  public async createOrUpdateBulk(data: Array<ICreateOrUpdateOrder>): Promise<ICreateOrUpdateOrderBulkResponse> {
-    return this.shipstation.request<ICreateOrUpdateOrderBulkResponse>({
+  public async createOrUpdateMultiple(
+    data: Array<ICreateOrUpdateOrder>
+  ): Promise<ICreateOrUpdateMultipleOrdersResponse> {
+    return this.shipstation.request<ICreateOrUpdateMultipleOrdersResponse>({
       url: `${this.baseUrl}/createorders`,
       method: 'POST',
       data

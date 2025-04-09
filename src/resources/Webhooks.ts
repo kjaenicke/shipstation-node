@@ -1,13 +1,13 @@
-import type { ISubscribeToWebhookOpts, ISubscriptionResponse, IWebhook, IWebhookResult } from '../models';
+import type { ISubscribeToWebhookOpts, ISubscriptionResponse, IWebhookResult } from '../models';
 import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 
-export class Webhooks extends BaseResource<IWebhook> {
+export class Webhooks extends BaseResource {
   constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'webhooks');
   }
 
-  public async getAll(): Promise<IWebhookResult> {
+  public async list(): Promise<IWebhookResult> {
     return this.shipstation.request<IWebhookResult>({
       url: this.baseUrl,
       method: 'GET'

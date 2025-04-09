@@ -2,9 +2,16 @@ import type { IProduct, IProductPaginationResult, IProductUpdateResponse } from 
 import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 
-export class Products extends BaseResource<IProduct> {
+export class Products extends BaseResource {
   constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'products');
+  }
+
+  public async get(productId: number): Promise<IProduct> {
+    return this.shipstation.request<IProduct>({
+      url: `${this.baseUrl}/${productId}`,
+      method: 'GET'
+    });
   }
 
   /**
@@ -13,7 +20,7 @@ export class Products extends BaseResource<IProduct> {
    * @returns {Promise<IProductPaginationResult>}
    * @see https://www.shipstation.com/docs/api/products/list/
    */
-  public async getAll(params?: object): Promise<IProductPaginationResult> {
+  public async list(params?: object): Promise<IProductPaginationResult> {
     return this.shipstation.request<IProductPaginationResult>({
       url: this.baseUrl,
       method: 'GET',

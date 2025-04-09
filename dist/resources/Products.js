@@ -13,7 +13,15 @@ export class Products extends BaseResource {
         super(shipstation, 'products');
         this.shipstation = shipstation;
     }
-    getAll(params) {
+    get(productId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.shipstation.request({
+                url: `${this.baseUrl}/${productId}`,
+                method: 'GET'
+            });
+        });
+    }
+    list(params) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.shipstation.request({
                 url: this.baseUrl,

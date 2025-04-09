@@ -1,11 +1,12 @@
-import type { ICreateOrUpdateOrder, ICreateOrUpdateOrderBulkResponse, IOrder, IOrderPaginationResult, ICreateLabel, ICreateLabelResponse } from '../models';
+import type { ICreateOrUpdateOrder, ICreateOrUpdateMultipleOrdersResponse, IOrder, IOrderPaginationResult, ICreateLabel, ICreateLabelResponse } from '../models';
 import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
-export declare class Orders extends BaseResource<IOrder> {
+export declare class Orders extends BaseResource {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(params?: object): Promise<IOrderPaginationResult>;
+    get(orderId: number): Promise<IOrder>;
+    list(params?: object): Promise<IOrderPaginationResult>;
     createOrUpdate(data: ICreateOrUpdateOrder): Promise<IOrder>;
-    createOrUpdateBulk(data: Array<ICreateOrUpdateOrder>): Promise<ICreateOrUpdateOrderBulkResponse>;
+    createOrUpdateMultiple(data: Array<ICreateOrUpdateOrder>): Promise<ICreateOrUpdateMultipleOrdersResponse>;
     createLabel(data: ICreateLabel): Promise<ICreateLabelResponse>;
 }

@@ -4,12 +4,12 @@ import type { IVoidLabel, IVoidLabelOptions } from '../models/VoidLabel';
 import type Shipstation from '../shipstation';
 import { BaseResource } from './Base';
 
-export class Shipments extends BaseResource<IShipment> {
+export class Shipments extends BaseResource {
   constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'shipments');
   }
 
-  public async getAll(params?: object): Promise<Array<IShipment>> {
+  public async list(params?: object): Promise<Array<IShipment>> {
     return this.shipstation.request<Array<IShipment>>({
       url: this.baseUrl,
       method: 'GET',

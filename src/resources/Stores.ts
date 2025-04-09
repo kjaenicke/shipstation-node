@@ -7,12 +7,19 @@ export interface IGetAllStoresOptions {
   marketplaceId?: number;
 }
 
-export class Stores extends BaseResource<IStore> {
+export class Stores extends BaseResource {
   constructor(protected override shipstation: Shipstation) {
     super(shipstation, 'stores');
   }
 
-  public async getAll(params?: IGetAllStoresOptions): Promise<Array<IStore>> {
+  public async get(storeId: number): Promise<IStore> {
+    return this.shipstation.request<IStore>({
+      url: `${this.baseUrl}/${storeId}`,
+      method: 'GET'
+    });
+  }
+
+  public async list(params?: IGetAllStoresOptions): Promise<Array<IStore>> {
     return this.shipstation.request<Array<IStore>>({
       params,
       url: this.baseUrl,
