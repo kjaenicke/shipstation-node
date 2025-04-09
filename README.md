@@ -1,49 +1,49 @@
 # shipstation-node
-Unofficial Shipstation API Wrapper for Node.js
 
+Unofficial Shipstation API Wrapper for Node.js
 
 This project is currently a work in progress and contributors are welcome! 👋
 
-
 ## Usage
+
 - Set the following env variables for our Shipstation account:
   - SS_API_KEY (your Shipstation API Key)
   - SS_API_SECRET (your Shipstation API secret)
 
-```js
-import ShipStation from 'shipstation-node'
+```ts
+import ShipStation from 'shipstation-node';
 
 // Create instance
-const shipstation = new ShipStation()
+const shipstation = new ShipStation();
 
 // Get all orders
-const orders = await shipstation.orders.getAll()
+const orders = await shipstation.orders.list();
 
 // Get order by id
-const order = await shipstation.orders.get(1244)
+const order = await shipstation.orders.get(1244);
 ```
 
 - Optionally, set Shipstation credentials through the options:
-  - apiKey (your Shipstation API Key)
-  - apiSecret (your Shipstation API secret)
+  - `apiKey` (your Shipstation API Key)
+  - `apiSecret` (your Shipstation API secret)
 
-```js
+```ts
 const shipstation = new ShipStation({
   apiKey: '<key>',
   apiSecret: '<secret>'
-})
+});
 ```
 
 - Optionally, Retry Shipstation API failures via:
-    - Set retry `true` to enable default options
-    - OR provide an object with any options supported by [axios-retry](https://www.npmjs.com/package/axios-retry)
+  - Set retry `true` to enable default options
+  - OR provide an object with any options supported by [axios-retry](https://www.npmjs.com/package/axios-retry)
 
-```js
+```ts
 const shipstation = new ShipStation({
-    // default retry config
-    retry: true,
+  // default retry config
+  retry: true,
 
-    // OR custom 
-    retry: { retries: 3 }
-})
+  // OR custom
+  retry: { retries: 3 }
+});
 ```

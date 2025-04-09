@@ -1,4 +1,3 @@
-import * as Models from './models';
 import { Carriers } from './resources/Carriers';
 import { Fulfillments } from './resources/Fulfillments';
 import { Orders } from './resources/Orders';
@@ -22,4 +21,4 @@ export default class ShipStationAPI {
         this.request = this.ss.request;
     }
 }
-export { Models };
+export * from './types';

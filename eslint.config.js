@@ -62,7 +62,7 @@ const nodeConfig = [
     }
   },
   {
-    ignores: ['typings/**']
+    ignores: ['dist/**']
   }
 ];
 

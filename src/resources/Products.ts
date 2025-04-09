@@ -1,5 +1,11 @@
-import type { IProduct, IProductPaginationResult, IProductUpdateResponse } from '../models';
 import type Shipstation from '../shipstation';
+import type {
+  GetProductResponse,
+  ListProductsOptions,
+  ListProductsResponse,
+  Product,
+  UpdateProductResponse
+} from '../types';
 import { BaseResource } from './Base';
 
 export class Products extends BaseResource {
@@ -7,21 +13,36 @@ export class Products extends BaseResource {
     super(shipstation, 'products');
   }
 
-  public async get(productId: number): Promise<IProduct> {
-    return this.shipstation.request<IProduct>({
+  /**
+   * [Official Documentation](https://www.shipstation.com/docs/api/products/get-product/)
+   *
+   * Requirements:
+   * - You'll need a `productId` to make this API call.
+   * - Find a list of products for this account (`productId`) by a
+   * [List Products call](https://www.shipstation.com/docs/api/products/list/).
+   *
+   * @param productId The system-generated identifier for the Product.
+   *
+   * @returns The product.
+   */
+  public async get(productId: number): Promise<GetProductResponse> {
+    return this.shipstation.request<GetProductResponse>({
       url: `${this.baseUrl}/${productId}`,
       method: 'GET'
     });
   }
 
   /**
-   * Get all products currently available in ShipStation
-   * @param {object} params - Query parameters
-   * @returns {Promise<IProductPaginationResult>}
-   * @see https://www.shipstation.com/docs/api/products/list/
+   * [Official Documentation](https://www.shipstation.com/docs/api/products/list/)
+   *
+   * Obtains a list of products that match the specified criteria.
+   *
+   * @param params The parameters for the request.
+   *
+   * @returns The list of products.
    */
-  public async list(params?: object): Promise<IProductPaginationResult> {
-    return this.shipstation.request<IProductPaginationResult>({
+  public async list(params?: ListProductsOptions): Promise<ListProductsResponse> {
+    return this.shipstation.request<ListProductsResponse>({
       url: this.baseUrl,
       method: 'GET',
       params
@@ -29,17 +50,22 @@ export class Products extends BaseResource {
   }
 
   /**
-   * Create or update a product
-   * @param {IProduct} data - Product data
-   * @returns {Promise<IProductUpdateResponse>}
-   * @see https://www.shipstation.com/docs/api/products/update/
+   * [Official Documentation](https://www.shipstation.com/docs/api/products/update/)
+   *
+   * Updates an existing product. This call does not currently support partial updates. The entire resource must be
+   * provided in the body of the request.
+   *
+   * Requirements:
+   * - You'll need a `productId` to make this API call.
+   * - Find a list of products for this account (`productId`) by a
+   * [List Products call](https://www.shipstation.com/docs/api/products/list/).
+   *
+   * @param data The product data.
+   *
+   * @returns The status of the update operation.
    */
-  public async update(data: IProduct): Promise<IProductUpdateResponse> {
-    if (!data.productId) {
-      throw new Error('Product ID is required');
-    }
-
-    return this.shipstation.request<IProductUpdateResponse>({
+  public async update(data: Product): Promise<UpdateProductResponse> {
+    return this.shipstation.request<UpdateProductResponse>({
       url: `${this.baseUrl}/${data.productId}`,
       method: 'PUT',
       data

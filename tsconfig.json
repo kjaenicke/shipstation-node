@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowJs": false,
     "declaration": true,
-    "declarationDir": "./typings",
     "esModuleInterop": true,
     "isolatedModules": true,
     "lib": ["ESNext"],
@@ -19,7 +18,6 @@
     "noUnusedParameters": true,
     "outDir": "./dist",
     "pretty": true,
-    "removeComments": true,
     "rootDir": "./src",
     "strict": true,
     "strictFunctionTypes": true,
