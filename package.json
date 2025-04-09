@@ -8,7 +8,7 @@
     "axios-retry": "^4.5.0",
     "stopcock": "^1.0.0"
   },
-  "description": "Unofficial Node.js wrapper for the Shipstation API",
+  "description": "Unofficial Node.js wrapper for the ShipStation API",
   "devDependencies": {
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
@@ -38,5 +38,5 @@
     "lint": "eslint --max-warnings 0 --config=eslint.config.js"
   },
   "types": "dist/index.d.ts",
-  "version": "0.28.0"
+  "version": "0.28.1"
 }

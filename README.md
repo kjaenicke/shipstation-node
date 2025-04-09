@@ -1,14 +1,14 @@
 # shipstation-node
 
-Unofficial Shipstation API Wrapper for Node.js
+Unofficial ShipStation API Wrapper for Node.js
 
 This project is currently a work in progress and contributors are welcome! 👋
 
 ## Usage
 
-- Set the following env variables for our Shipstation account:
-  - SS_API_KEY (your Shipstation API Key)
-  - SS_API_SECRET (your Shipstation API secret)
+- Set the following env variables for our ShipStation account:
+  - SHIPSTATION_API_KEY (your ShipStation API Key)
+  - SHIPSTATION_API_SECRET_KEY (your ShipStation API secret)
 
 ```ts
 import ShipStation from 'shipstation-node';
@@ -23,9 +23,9 @@ const orders = await shipstation.orders.list();
 const order = await shipstation.orders.get(1244);
 ```
 
-- Optionally, set Shipstation credentials through the options:
-  - `apiKey` (your Shipstation API Key)
-  - `apiSecret` (your Shipstation API secret)
+- Optionally, set ShipStation credentials through the options:
+  - `apiKey` (your ShipStation API Key)
+  - `apiSecret` (your ShipStation API secret)
 
 ```ts
 const shipstation = new ShipStation({
@@ -34,7 +34,7 @@ const shipstation = new ShipStation({
 });
 ```
 
-- Optionally, Retry Shipstation API failures via:
+- Optionally, Retry ShipStation API failures via:
   - Set retry `true` to enable default options
   - OR provide an object with any options supported by [axios-retry](https://www.npmjs.com/package/axios-retry)
 

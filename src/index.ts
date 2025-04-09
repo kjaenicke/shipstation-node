@@ -7,12 +7,12 @@ import { Shipments } from './resources/Shipments';
 import { Stores } from './resources/Stores';
 import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
-import type { ShipstationRequestOptions, ShipstationOptions } from './shipstation';
-import Shipstation from './shipstation';
+import type { ShipStationRequestOptions, ShipStationOptions } from './shipstation';
+import ShipStation from './shipstation';
 import { Products } from './resources/Products';
 
 export default class ShipStationAPI {
-  private readonly ss: Shipstation;
+  private readonly ss: ShipStation;
 
   public orders: Orders;
   public carriers: Carriers;
@@ -22,10 +22,10 @@ export default class ShipStationAPI {
   public shipments: Shipments;
   public warehouses: Warehouses;
   public webhooks: Webhooks;
-  public request: (args: ShipstationRequestOptions) => Promise<AxiosResponse>;
+  public request: (args: ShipStationRequestOptions) => Promise<AxiosResponse>;
 
-  constructor(options?: ShipstationOptions) {
-    this.ss = new Shipstation(options);
+  constructor(options?: ShipStationOptions) {
+    this.ss = new ShipStation(options);
 
     this.orders = new Orders(this.ss);
     this.carriers = new Carriers(this.ss);
@@ -39,6 +39,6 @@ export default class ShipStationAPI {
   }
 }
 
-export type { ShipstationRequestOptions };
+export type { ShipStationRequestOptions };
 
 export * from './types';

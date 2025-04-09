@@ -1,5 +1,5 @@
 import type { Order, CreateOrderLabelOptions, ListOrdersByTagOptions } from '../types';
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import { BaseResource } from './Base';
 import type {
   CreateLabelResponse,
@@ -11,7 +11,7 @@ import type {
 } from '../types';
 
 export class Orders extends BaseResource {
-  constructor(protected override shipstation: Shipstation) {
+  constructor(protected override shipstation: ShipStation) {
     super(shipstation, 'orders');
   }
 

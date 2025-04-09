@@ -11,11 +11,11 @@ const RATE_LIMIT_OPTS = {
   interval: 1000 * 40
 };
 
-export interface ShipstationRequestOptions extends Pick<AxiosRequestConfig, 'data' | 'params' | 'url'> {
+export interface ShipStationRequestOptions extends Pick<AxiosRequestConfig, 'data' | 'params' | 'url'> {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
 }
 
-export interface ShipstationOptions {
+export interface ShipStationOptions {
   apiKey?: string;
   apiSecret?: string;
   partnerKey?: string;
@@ -23,16 +23,16 @@ export interface ShipstationOptions {
   timeout?: number;
 }
 
-export default class Shipstation {
+export default class ShipStation {
   public authorizationToken: string;
   public partnerKey?: string;
   private readonly timeout?: number;
 
-  constructor(options?: ShipstationOptions) {
-    const key = options?.apiKey ? options.apiKey : process.env.SS_API_KEY;
-    const secret = options?.apiSecret ? options.apiSecret : process.env.SS_API_SECRET;
+  constructor(options?: ShipStationOptions) {
+    const key = options?.apiKey ? options.apiKey : process.env.SHIPSTATION_API_KEY;
+    const secret = options?.apiSecret ? options.apiSecret : process.env.SHIPSTATION_API_SECRET_KEY;
 
-    this.partnerKey = options?.partnerKey ? options.partnerKey : process.env.SS_PARTNER_KEY;
+    this.partnerKey = options?.partnerKey ? options.partnerKey : process.env.SHIPSTATION_PARTNER_KEY;
 
     if (!key || !secret) {
       throw new Error(`APIKey and API Secret are required! Provided API Key: ${key} API Secret: ${secret}`);
@@ -53,7 +53,7 @@ export default class Shipstation {
     }
   }
 
-  public request = async <T>({ data, method = 'GET', params, url }: ShipstationRequestOptions) => {
+  public request = async <T>({ data, method = 'GET', params, url }: ShipStationRequestOptions) => {
     const response = await axios.request<T>({
       baseURL: 'https://ssapi.shipstation.com/',
       headers: {

@@ -7,11 +7,11 @@ import type {
   ShipmentResponseItem,
   VoidShipmentLabelResponse
 } from '../types';
-import type Shipstation from '../shipstation';
+import type ShipStation from '../shipstation';
 import { BaseResource } from './Base';
 
 export class Shipments extends BaseResource {
-  constructor(protected override shipstation: Shipstation) {
+  constructor(protected override shipstation: ShipStation) {
     super(shipstation, 'shipments');
   }
 
