@@ -8,7 +8,7 @@ This project is currently a work in progress and contributors are welcome! 👋
 
 - Set the following env variables for our ShipStation account:
   - SHIPSTATION_API_KEY (your ShipStation API Key)
-  - SHIPSTATION_API_SECRET_KEY (your ShipStation API secret)
+  - SHIPSTATION_API_SECRET (your ShipStation API secret)
 
 ```ts
 import ShipStation from 'shipstation-node';
