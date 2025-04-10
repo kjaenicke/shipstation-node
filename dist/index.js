@@ -7,9 +7,11 @@ import { Warehouses } from './resources/Warehouses';
 import { Webhooks } from './resources/Webhooks';
 import ShipStation from './shipstation';
 import { Products } from './resources/Products';
+import { Accounts } from './resources/Accounts';
 export default class ShipStationAPI {
     constructor(options) {
         this.ss = new ShipStation(options);
+        this.accounts = new Accounts(this.ss);
         this.orders = new Orders(this.ss);
         this.carriers = new Carriers(this.ss);
         this.fulfillments = new Fulfillments(this.ss);

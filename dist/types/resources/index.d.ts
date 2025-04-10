@@ -1,3 +1,4 @@
+export * from './accounts';
 export * from './carriers';
 export * from './fulfillments';
 export * from './orders';
