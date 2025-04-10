@@ -9,6 +9,7 @@ import { Webhooks } from './resources/Webhooks';
 import type { ShipStationRequestOptions, ShipStationOptions } from './shipstation';
 import { Products } from './resources/Products';
 import { Accounts } from './resources/Accounts';
+import { Users } from './resources/Users';
 export default class ShipStationAPI {
     private readonly ss;
     accounts: Accounts;
@@ -20,6 +21,7 @@ export default class ShipStationAPI {
     stores: Stores;
     warehouses: Warehouses;
     webhooks: Webhooks;
+    users: Users;
     request: (args: ShipStationRequestOptions) => Promise<AxiosResponse>;
     constructor(options?: ShipStationOptions);
 }

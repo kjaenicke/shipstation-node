@@ -29,10 +29,10 @@ export default class ShipStation {
   private readonly timeout?: number;
 
   constructor(options?: ShipStationOptions) {
-    const key = options?.apiKey ? options.apiKey : process.env.SHIPSTATION_API_KEY;
-    const secret = options?.apiSecret ? options.apiSecret : process.env.SHIPSTATION_API_SECRET;
+    const key = options?.apiKey ?? process.env.SHIPSTATION_API_KEY;
+    const secret = options?.apiSecret ?? process.env.SHIPSTATION_API_SECRET;
 
-    this.partnerKey = options?.partnerKey ? options.partnerKey : process.env.SHIPSTATION_PARTNER_KEY;
+    this.partnerKey = options?.partnerKey ?? process.env.SHIPSTATION_PARTNER_KEY;
 
     if (!key || !secret) {
       throw new Error(`APIKey and API Secret are required! Provided API Key: ${key} API Secret: ${secret}`);

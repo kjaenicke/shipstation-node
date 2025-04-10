@@ -7,3 +7,4 @@ export * from './shipments';
 export * from './stores';
 export * from './warehouses';
 export * from './webhooks';
+export * from './users';
