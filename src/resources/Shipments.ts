@@ -49,7 +49,7 @@ export class Shipments extends BaseResource {
    *
    * @returns The shipping rates.
    */
-  public async getRates(data?: GetRatesOptions): Promise<GetRatesResponse> {
+  public async getRates(data: GetRatesOptions): Promise<GetRatesResponse> {
     return this.shipstation.request<GetRatesResponse>({
       url: `${this.baseUrl}/getrates`,
       method: 'POST',

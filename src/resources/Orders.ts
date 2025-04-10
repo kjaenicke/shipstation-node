@@ -20,7 +20,7 @@ export class Orders extends BaseResource {
    *
    * Retrieve a single order from the database.
    *
-   * **Requirements**
+   * **Requirements:**
    * - You'll need an `orderId` to make this API call.
    * - Find that orderId in your Response from the
    * [Create/Update Order call](https://www.shipstation.com/docs/api/orders/create-update-order/) if you are creating the orders via OpenAPI.
