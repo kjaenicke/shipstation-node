@@ -273,3 +273,30 @@ export interface CreateLabelResponse {
     labelData: string;
     formData: any;
 }
+export interface MarkShippedOptions {
+    /** Identifies the order that will be marked as **Shipped**. */
+    orderId: number;
+    /** Code of the carrier that is marked as having shipped the order. */
+    carrierCode: string;
+    /** Date order was shipped. */
+    shipDate?: string;
+    /** Tracking number of shipment. */
+    trackingNumber?: string;
+    /**
+     * Specifies whether the customer should be notified of the shipment.
+     *
+     * @default false
+     */
+    notifyCustomer?: boolean;
+    /**
+     * Specifies whether the sales channel should be notified of the shipment.
+     *
+     * @default false
+     */
+    notifySalesChannel?: boolean;
+}
+export type MarkShippedResponse = Pick<Order, 'orderId' | 'orderNumber'>;
+export interface OrderOperationResponse {
+    success: boolean;
+    message: string;
+}
