@@ -7,7 +7,7 @@ export declare class Products extends BaseResource {
     /**
      * [Official Documentation](https://www.shipstation.com/docs/api/products/get-product/)
      *
-     * Requirements:
+     * **Requirements:**
      * - You'll need a `productId` to make this API call.
      * - Find a list of products for this account (`productId`) by a
      * [List Products call](https://www.shipstation.com/docs/api/products/list/).
@@ -33,7 +33,7 @@ export declare class Products extends BaseResource {
      * Updates an existing product. This call does not currently support partial updates. The entire resource must be
      * provided in the body of the request.
      *
-     * Requirements:
+     * **Requirements:**
      * - You'll need a `productId` to make this API call.
      * - Find a list of products for this account (`productId`) by a
      * [List Products call](https://www.shipstation.com/docs/api/products/list/).

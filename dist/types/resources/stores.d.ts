@@ -41,3 +41,52 @@ export interface ListStoresOptions {
     marketplaceId?: number;
 }
 export type ListStoresResponse = Array<Omit<StoreResponseItem, 'statusMappings'>>;
+export interface DeactivateStoreResponse {
+    success: boolean;
+    message: string;
+}
+export interface GetRefreshRateResponse {
+    storeId: number;
+    refreshStatusId: number;
+    refreshStatus: string;
+    lastRefreshAttempt: string;
+    refreshDate: string;
+}
+export interface ReactivateStoreResponse {
+    success: boolean;
+    message: string;
+}
+export interface RefreshStoreOptions {
+    /**
+     * Specifies the store that will get refreshed. If the `storeId` is not specified, a store refresh will be initiated
+     * for all refreshable stores on that account.
+     */
+    storeId?: number;
+    /**
+     * Specifies the starting date for new order imports.
+     *
+     * **This is only needed if you are trying to retrieve historical orders.**
+     *
+     * If the `refreshDate` is not specified, ShipStation will use the last recorded `refreshDate` for that store.
+     *
+     * **INFO:**
+     * - Sending the `refreshDate` without a time (Ex. 2020-05-29) will be interpreted by our system as midnight (00:00)
+     * PST of the date sent.
+     * - The correct format for the refresh date is **YYYY-MM-DD HH:MM:SS**, it needs to be representative of the time in
+     * PST.
+     */
+    refreshDate?: string;
+}
+export interface RefreshStoreResponse {
+    success: boolean;
+    message: string;
+}
+export interface ListMarketplacesResponseItem {
+    name: string;
+    marketplaceId: number;
+    canRefresh: boolean;
+    supportsCustomMappings: boolean;
+    supportsCustomStatuses: boolean;
+    canConfirmShipments: boolean;
+}
+export type ListMarketplacesResponse = Array<ListMarketplacesResponseItem>;

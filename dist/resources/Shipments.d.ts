@@ -31,7 +31,7 @@ export declare class Shipments extends BaseResource {
      *
      * @returns The shipping rates.
      */
-    getRates(data?: GetRatesOptions): Promise<GetRatesResponse>;
+    getRates(data: GetRatesOptions): Promise<GetRatesResponse>;
     /**
      * [Official Documentation](https://www.shipstation.com/docs/api/shipments/create-label/)
      *
