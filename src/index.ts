@@ -10,16 +10,18 @@ import { Webhooks } from './resources/Webhooks';
 import type { ShipStationRequestOptions, ShipStationOptions } from './shipstation';
 import ShipStation from './shipstation';
 import { Products } from './resources/Products';
+import { Accounts } from './resources/Accounts';
 
 export default class ShipStationAPI {
   private readonly ss: ShipStation;
 
-  public orders: Orders;
+  public accounts: Accounts;
   public carriers: Carriers;
   public fulfillments: Fulfillments;
+  public orders: Orders;
   public products: Products;
-  public stores: Stores;
   public shipments: Shipments;
+  public stores: Stores;
   public warehouses: Warehouses;
   public webhooks: Webhooks;
   public request: (args: ShipStationRequestOptions) => Promise<AxiosResponse>;
@@ -27,6 +29,7 @@ export default class ShipStationAPI {
   constructor(options?: ShipStationOptions) {
     this.ss = new ShipStation(options);
 
+    this.accounts = new Accounts(this.ss);
     this.orders = new Orders(this.ss);
     this.carriers = new Carriers(this.ss);
     this.fulfillments = new Fulfillments(this.ss);
