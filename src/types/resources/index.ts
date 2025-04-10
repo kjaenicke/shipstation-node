@@ -1,5 +1,6 @@
 export * from './accounts';
 export * from './carriers';
+export * from './customers';
 export * from './fulfillments';
 export * from './orders';
 export * from './products';
