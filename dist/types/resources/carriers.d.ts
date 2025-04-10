@@ -9,3 +9,13 @@ export interface CarrierResponseItem {
     primary: boolean;
 }
 export type ListCarriersResponse = Array<CarrierResponseItem>;
+export type AddFundsResponse = Omit<CarrierResponseItem, 'nickname' | 'shippingProviderId' | 'primary'>;
+export interface ListPackagesOrServicesResponseItem {
+    carrierCode: string;
+    code: string;
+    name: string;
+    domestic: boolean;
+    international: boolean;
+}
+export type ListPackagesResponse = Array<ListPackagesOrServicesResponseItem>;
+export type ListServicesResponse = Array<ListPackagesOrServicesResponseItem>;
