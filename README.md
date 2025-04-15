@@ -1,8 +1,8 @@
-# shipstation-node
+# [DEPRECATED] shipstation-node
 
-Unofficial ShipStation API Wrapper for Node.js
+⚠️ The repository for shipstation-node has moved to [https://github.com/rip-technologies/shipstation-node](https://github.com/rip-technologies/shipstation-node)
 
-This project is currently a work in progress and contributors are welcome! 👋
+This repo has been deprecated and is no longer maintained.
 
 ## Usage
 
